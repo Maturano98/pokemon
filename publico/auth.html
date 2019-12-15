@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="./index.css">   
+    <link rel="icon" type="image/png" href="./favicon.png">    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokémon JS</title>
+</head>
+<body>
+    <center>
+        <button id="bton" onclick="unj()">Ir al mapa</button>
+        <div id="nav">
+            <button onclick="obtenerPerfil()">//</button>
+            <span id="usuario">Cargar usuario</span>
+            <div id="medallas">
+                <img class="medalla" src="./gimnasio/Medalla_X1.png">
+                <img class="medalla" src="./gimnasio/Medalla_X2.png">
+                <img class="medalla" src="./gimnasio/Medalla_X3.png">
+                <img class="medalla" src="./gimnasio/Medalla_X4.png">
+                <img class="medalla" src="./gimnasio/Medalla_X5.png">
+                <img class="medalla" src="./gimnasio/Medalla_X6.png">
+                <img class="medalla" src="./gimnasio/Medalla_X7.png">
+                <img class="medalla" src="./gimnasio/Medalla_X8.png">
+                <img class="medalla2" src="./gimnasio/Medalla_X9.png">
+                <img class="medalla2" src="./gimnasio/Medalla_X10.png">
+                <img class="medalla2" src="./gimnasio/Medalla_X11.png">
+                <img class="medalla2" src="./gimnasio/Medalla_X12.png">
+                <img class="medalla2" src="./gimnasio/Medalla_X13.png">
+                <img class="medalla2" src="./gimnasio/Medalla_X14.png">
+                <img class="medalla2" src="./gimnasio/Medalla_X15.png">
+                <img class="medalla2" src="./gimnasio/Medalla_X16.png">
+            </div>
+            <form action="/api/medallas" hidden method="POST" id="form1">
+                <label for="meed">Medallas</label>
+                <input id="meed" name="meed">
+                <button type="submit">Ingresar</button>
+            </form>
+            <div id="pokemones">
+                <div id="nv1"></div>
+                <div id="nv2"></div>
+                <div id="nv3"></div>
+                <div id="nv4"></div>
+                <div id="nv5"></div>
+                <div id="nv6"></div>
+            </div>
+        </div>
+    <div id="mapa">
+       <div> 
+            <button class="gims" id="gim1" onclick="_gs('g1')"></button>
+        <div id="g1" class="bar"></div>
+        </div>
+        <div> 
+            <button class="gims" id="gim2" onclick="_gs('g2')"></button>
+        <div id="g2" class="bar"></div>
+        </div>
+        <div> 
+            <button class="gims" id="gim3" onclick="_gs('g3')"></button>
+        <div id="g3" class="bar"></div>
+        </div>
+        <div> 
+            <button class="gims" id="gim4" onclick="_gs('g4')"></button>
+        <div id="g4" class="bar"></div>
+        </div>
+        <div> 
+            <button class="gims" id="gim5" onclick="_gs('g5')"></button>
+        <div id="g5" class="bar"></div>
+        </div>
+        <div> 
+            <button class="gims" id="gim6" onclick="_gs('g6')"></button>
+        <div id="g6" class="bar"></div>
+        </div>
+        <div> 
+            <button class="gims" id="gim7" onclick="_gs('g7')"></button>
+        <div id="g7" class="bar"></div>
+        </div>
+        <div> 
+            <button class="gims" id="gim8" onclick="_gs('g8')"></button>
+        <div id="g8" class="bar"></div>
+        </div>
+        <button id="region" onclick="region()"></button>
+    </div>
+        <div id="mapa2">
+            <div> 
+                <button class="gims" id="gim1_" onclick="_gs('g9')"></button>
+                <div id="g9" class="bar"></div>
+            </div>
+            <div> 
+                <button class="gims" id="gim2_" onclick="_gs('g10')"></button>
+                <div id="g10" class="bar"></div>
+            </div>
+            <div> 
+                <button class="gims" id="gim3_" onclick="_gs('g11')"></button>
+                <div id="g11" class="bar"></div>
+            </div>
+            <div> 
+                <button class="gims" id="gim4_" onclick="_gs('g12')"></button>
+                <div id="g12" class="bar"></div>
+            </div>
+            <div> 
+                <button class="gims" id="gim5_" onclick="_gs('g13')"></button>
+                <div id="g13" class="bar"></div>
+            </div>
+            <div> 
+                <button class="gims" id="gim6_" onclick="_gs('g14')"></button>
+                <div id="g14" class="bar"></div>
+            </div>
+            <div> 
+                <button class="gims" id="gim7_" onclick="_gs('g15')"></button>
+                <div id="g15" class="bar"></div>
+            </div>
+            <div> 
+                <button class="gims" id="gim8_" onclick="_gs('g16')"></button>
+                <div id="g16" class="bar"></div>
+            </div>
+            <button id="region" onclick="region()"></button>
+        </div>
+    </center>
+    <div id="contOculto">
+        <div id="pk1"></div>
+        <div id="contP1">
+            <progress id="hp1" max="100" value="100"></progress>
+            <h1 id="n1">Nombre pokemon</h1>
+            <h1 id="nivel1">Nivel</h1>
+            <h2 id="salu1"></h2></div>
+        <div id="pk2"></div>
+        <div id="contP2">
+            <progress id="hpRival" max="100" value="100"></progress>
+            <h1 id="n2">Nombre pokemon </h1>
+            <h1 id="nivel2">Nivel</h1>
+        </div>
+        <table id="movs">
+            <tr>
+                <td><button id="at1" onclick="ataque(poke1.ata1)">Ataque1</button></td>
+                <td><button id="at2" onclick="ataque(poke1.ata2)">Ataque2</button></td>
+            </tr>
+            <tr>
+                <td><button id="at3" onclick="ataque(poke1.ata3)">Ataque3</button></td>
+                <td><button id="at4" onclick="ataque(poke1.ata4)">Ataque4</button></td>
+            </tr>
+        </table>
+    </div>
+    <center><table id="tabla"><td>¿Qué hacer ahora?</td></table></center>
+    <script src="./script.js"></script>
+    <script>
+        var poke1
+        var poke2
+        var poke3
+        var poke4
+        var poke5
+        var poke6
+        async function obtenerPerfil() {
+            var respuesta = await fetch('/api/perfil')
+            var usuario = await respuesta.json()
+            document.getElementById("usuario").innerText = usuario.nombre
+            medallas = parseInt(usuario.medallas)
+            actualizar_medallas()
+            poke1 = window[usuario.pok1.toLowerCase()]
+            poke2 = window[usuario.pok2.toLowerCase()]
+            poke3 = window[usuario.pok3.toLowerCase()]
+            poke4 = window[usuario.pok4.toLowerCase()]
+            poke5 = window[usuario.pok5.toLowerCase()]
+            poke6 = window[usuario.pok6.toLowerCase()]
+            document.getElementById("nv1").innerHTML = `<img src="./sprite/${usuario.pok1}_2.png">`
+            document.getElementById("nv2").innerHTML = `<img src="./sprite/${usuario.pok2}_2.png">`
+            document.getElementById("nv3").innerHTML = `<img src="./sprite/${usuario.pok3}_2.png">`
+            document.getElementById("nv4").innerHTML = `<img src="./sprite/${usuario.pok4}_2.png">`
+            document.getElementById("nv5").innerHTML = `<img src="./sprite/${usuario.pok5}_2.png">`
+            document.getElementById("nv6").innerHTML = `<img src="./sprite/${usuario.pok6}_2.png">`
+            if (usuario.stats1[0].constructor === Array) {
+                psmax1 = usuario.stats1[0][0]
+                atf1 = usuario.stats1[1][0]
+                dff1 = usuario.stats1[2][0]
+                ats1 = usuario.stats1[3][0]
+                dfs1 = usuario.stats1[4][0]
+            }
+            if (usuario.stats2[0].constructor === Array) {
+                psmax2 = usuario.stats2[0][0]
+                atf2 = usuario.stats2[1][0]
+                dff2 = usuario.stats2[2][0]
+                ats2 = usuario.stats2[3][0]
+                dfs2 = usuario.stats2[4][0]
+            }
+            if (usuario.stats3[0].constructor === Array) {
+                psmax3 = usuario.stats3[0][0]
+                atf3 = usuario.stats3[1][0]
+                dff3 = usuario.stats3[2][0]
+                ats3 = usuario.stats3[3][0]
+                dfs3 = usuario.stats3[4][0]
+            }
+            if (usuario.stats4[0].constructor === Array) {
+                psmax4 = usuario.stats4[0][0]
+                atf4 = usuario.stats4[1][0]
+                dff4 = usuario.stats4[2][0]
+                ats4 = usuario.stats4[3][0]
+                dfs4 = usuario.stats4[4][0]
+            }
+            if (usuario.stats5[0].constructor === Array) {
+                psmax5 = usuario.stats5[0][0]
+                atf5 = usuario.stats5[1][0]
+                dff5 = usuario.stats5[2][0]
+                ats5 = usuario.stats5[3][0]
+                dfs5 = usuario.stats5[4][0]
+            }
+            if (usuario.stats6[0].constructor === Array) {
+                psmax6 = usuario.stats6[0][0]
+                atf6 = usuario.stats6[1][0]
+                dff6 = usuario.stats6[2][0]
+                ats6 = usuario.stats6[3][0]
+                dfs6 = usuario.stats6[4][0]
+            }
+            if (usuario.stats1[0].constructor != Array) {
+                psmax1 = usuario.stats1[0]
+                atf1 = usuario.stats1[1]
+                dff1 = usuario.stats1[2]
+                ats1 = usuario.stats1[3]
+                dfs1 = usuario.stats1[4]
+            }
+            if (usuario.stats2[0].constructor != Array) {
+                psmax2 = usuario.stats2[0]
+                atf2 = usuario.stats2[1]
+                dff2 = usuario.stats2[2]
+                ats2 = usuario.stats2[3]
+                dfs2 = usuario.stats2[4]
+            }
+            if (usuario.stats3[0].constructor != Array) {
+                psmax3 = usuario.stats3[0]
+                atf3 = usuario.stats3[1]
+                dff3 = usuario.stats3[2]
+                ats3 = usuario.stats3[3]
+                dfs3 = usuario.stats3[4]
+            }
+            if (usuario.stats4[0].constructor != Array) {
+                psmax4 = usuario.stats4[0]
+                atf4 = usuario.stats4[1]
+                dff4 = usuario.stats4[2]
+                ats4 = usuario.stats4[3]
+                dfs4 = usuario.stats4[4]
+            }
+            if (usuario.stats5[0].constructor != Array) {
+                psmax5 = usuario.stats5[0]
+                atf5 = usuario.stats5[1]
+                dff5 = usuario.stats5[2]
+                ats5 = usuario.stats5[3]
+                dfs5 = usuario.stats5[4]
+            }
+            if (usuario.stats6[0].constructor != Array) {
+                psmax6 = usuario.stats6[0]
+                atf6 = usuario.stats6[1]
+                dff6 = usuario.stats6[2]
+                ats6 = usuario.stats6[3]
+                dfs6 = usuario.stats6[4]
+            }
+}
+    </script>
+</body>
+</html>

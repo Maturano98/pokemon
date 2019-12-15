@@ -1,0 +1,5267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="./estilo.css">   
+    <link rel="icon" type="image/png" href="./favicon.png">    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokémon JS</title>
+</head>
+<body>
+    <button id="log" onclick="log()">Login</button>
+    <button id="registro" onclick="reg()">Registro</button>
+    <form action="/api/login" hidden method="POST" id="form1">
+        <fieldset>
+            <label for="nombre">Usuario</label>
+            <input name="nombre" id="nombre" required>
+        </fieldset>
+        <fieldset> 
+            <label for="pass">Contraseña</label>
+            <input type="password" name="pass" id="pass" minlength="6" required>
+        </fieldset>
+            <button type="submit">Ingresar</button>
+    </form>
+
+    <form action="/api/registro" hidden id="form2" method="POST">
+        <fieldset id="vv1">
+            <label for="nombre">Usuario</label>
+            <input name="nombre" id="nombre" required>
+        </fieldset>
+        <fieldset id="vv2"> 
+            <label for="pass">Contraseña</label>
+            <input type="password" name="pass" id="pass" minlength="6" required>
+        </fieldset>
+        <button type="button" id="vv3" onclick="elegirP()">Ingresar</button>
+        <h2 id="z" style="display: none">ELIGE 6 POKÉMON</h2>
+        <div id="poke1"></div>
+        <select id="vv4" name="vv4" required style="display: none"  onchange="cargarPk(1)">
+            <option hidden disabled selected value>Elige un pokémon</option>
+            <option>Venusaur</option>
+            <option>Charizard</option>
+            <option>Blastoise</option>
+            <option>Butterfree</option>
+            <option>Beedrill</option>
+            <option>Pidgeot</option>
+            <option>Raticate</option>
+            <option>Fearow</option>
+            <option>Arbok</option>
+            <option>Pikachu</option>
+            <option>Raichu</option>
+            <option>Sandslash</option>
+            <option>Nidoqueen</option>
+            <option>Nidoking</option>
+            <option>Clefable</option>
+            <option>Ninetales</option>
+            <option>Wigglytuff</option>
+            <option>Vileplume</option>
+            <option>Parasect</option>
+            <option>Venomoth</option>
+            <option>Dugtrio</option>
+            <option>Persian</option>
+            <option>Golduck</option>
+            <option>Primeape</option>
+            <option>Arcanine</option>
+            <option>Poliwrath</option>
+            <option>Alakazam</option>
+            <option>Machamp</option>
+            <option>Victreebel</option>
+            <option>Tentacruel</option>
+            <option>Golem</option>
+            <option>Rapidash</option>
+            <option>Magneton</option>
+            <option value="Farfetchd">Farfetch'd</option>
+            <option>Dodrio</option>
+            <option>Dewgong</option>
+            <option>Muk</option>
+            <option>Cloyster</option>
+            <option>Gengar</option>
+            <option>Onix</option>
+            <option>Hypno</option>
+            <option>Kingler</option>
+            <option>Electrode</option>
+            <option>Exeggutor</option>
+            <option>Marowak</option>
+            <option>Hitmonlee</option>
+            <option>Hitmonchan</option>
+            <option>Lickitung</option>
+            <option>Weezing</option>
+            <option>Rhydon</option>
+            <option>Tangela</option>
+            <option>Kangaskhan</option>
+            <option>Seaking</option>
+            <option>Starmie</option>
+            <option value="MrMime">Mr. Mime</option>
+            <option>Jynx</option>
+            <option>Electabuzz</option>
+            <option>Magmar</option>
+            <option>Pinsir</option>
+            <option>Tauros</option>
+            <option>Gyarados</option>
+            <option>Lapras</option>
+            <option>Ditto</option>
+            <option>Vaporeon</option>
+            <option>Jolteon</option>
+            <option>Flareon</option>
+            <option>Omastar</option>
+            <option>Kabutops</option>
+            <option>Aerodactyl</option>
+            <option>Snorlax</option>
+            <option>Dragonite</option>
+        </select>
+        <div id="poke2"></div>
+        <select id="vv5" name="vv5" required style="display: none" onchange="cargarPk(2)">
+            <option hidden disabled selected value>Elige un pokémon</option>
+            <option>Venusaur</option>
+            <option>Charizard</option>
+            <option>Blastoise</option>
+            <option>Butterfree</option>
+            <option>Beedrill</option>
+            <option>Pidgeot</option>
+            <option>Raticate</option>
+            <option>Fearow</option>
+            <option>Arbok</option>
+            <option>Pikachu</option>
+            <option>Raichu</option>
+            <option>Sandslash</option>
+            <option>Nidoqueen</option>
+            <option>Nidoking</option>
+            <option>Clefable</option>
+            <option>Ninetales</option>
+            <option>Wigglytuff</option>
+            <option>Vileplume</option>
+            <option>Parasect</option>
+            <option>Venomoth</option>
+            <option>Dugtrio</option>
+            <option>Persian</option>
+            <option>Golduck</option>
+            <option>Primeape</option>
+            <option>Arcanine</option>
+            <option>Poliwrath</option>
+            <option>Alakazam</option>
+            <option>Machamp</option>
+            <option>Victreebel</option>
+            <option>Tentacruel</option>
+            <option>Golem</option>
+            <option>Rapidash</option>
+            <option>Magneton</option>
+            <option value="Farfetchd">Farfetch'd</option>
+            <option>Dodrio</option>
+            <option>Dewgong</option>
+            <option>Muk</option>
+            <option>Cloyster</option>
+            <option>Gengar</option>
+            <option>Onix</option>
+            <option>Hypno</option>
+            <option>Kingler</option>
+            <option>Electrode</option>
+            <option>Exeggutor</option>
+            <option>Marowak</option>
+            <option>Hitmonlee</option>
+            <option>Hitmonchan</option>
+            <option>Lickitung</option>
+            <option>Weezing</option>
+            <option>Rhydon</option>
+            <option>Tangela</option>
+            <option>Kangaskhan</option>
+            <option>Seaking</option>
+            <option>Starmie</option>
+            <option value="MrMime">Mr. Mime</option>
+            <option>Jynx</option>
+            <option>Electabuzz</option>
+            <option>Magmar</option>
+            <option>Pinsir</option>
+            <option>Tauros</option>
+            <option>Gyarados</option>
+            <option>Lapras</option>
+            <option>Ditto</option>
+            <option>Vaporeon</option>
+            <option>Jolteon</option>
+            <option>Flareon</option>
+            <option>Omastar</option>
+            <option>Kabutops</option>
+            <option>Aerodactyl</option>
+            <option>Snorlax</option>
+            <option>Dragonite</option>
+        </select>
+        <div id="poke3"></div>
+        <select id="vv6" name="vv6" required style="display: none" onchange="cargarPk(3)">
+            <option hidden disabled selected value>Elige un pokémon</option>
+            <option>Venusaur</option>
+            <option>Charizard</option>
+            <option>Blastoise</option>
+            <option>Butterfree</option>
+            <option>Beedrill</option>
+            <option>Pidgeot</option>
+            <option>Raticate</option>
+            <option>Fearow</option>
+            <option>Arbok</option>
+            <option>Pikachu</option>
+            <option>Raichu</option>
+            <option>Sandslash</option>
+            <option>Nidoqueen</option>
+            <option>Nidoking</option>
+            <option>Clefable</option>
+            <option>Ninetales</option>
+            <option>Wigglytuff</option>
+            <option>Vileplume</option>
+            <option>Parasect</option>
+            <option>Venomoth</option>
+            <option>Dugtrio</option>
+            <option>Persian</option>
+            <option>Golduck</option>
+            <option>Primeape</option>
+            <option>Arcanine</option>
+            <option>Poliwrath</option>
+            <option>Alakazam</option>
+            <option>Machamp</option>
+            <option>Victreebel</option>
+            <option>Tentacruel</option>
+            <option>Golem</option>
+            <option>Rapidash</option>
+            <option>Magneton</option>
+            <option value="Farfetchd">Farfetch'd</option>
+            <option>Dodrio</option>
+            <option>Dewgong</option>
+            <option>Muk</option>
+            <option>Cloyster</option>
+            <option>Gengar</option>
+            <option>Onix</option>
+            <option>Hypno</option>
+            <option>Kingler</option>
+            <option>Electrode</option>
+            <option>Exeggutor</option>
+            <option>Marowak</option>
+            <option>Hitmonlee</option>
+            <option>Hitmonchan</option>
+            <option>Lickitung</option>
+            <option>Weezing</option>
+            <option>Rhydon</option>
+            <option>Tangela</option>
+            <option>Kangaskhan</option>
+            <option>Seaking</option>
+            <option>Starmie</option>
+            <option value="MrMime">Mr. Mime</option>
+            <option>Jynx</option>
+            <option>Electabuzz</option>
+            <option>Magmar</option>
+            <option>Pinsir</option>
+            <option>Tauros</option>
+            <option>Gyarados</option>
+            <option>Lapras</option>
+            <option>Ditto</option>
+            <option>Vaporeon</option>
+            <option>Jolteon</option>
+            <option>Flareon</option>
+            <option>Omastar</option>
+            <option>Kabutops</option>
+            <option>Aerodactyl</option>
+            <option>Snorlax</option>
+            <option>Dragonite</option>
+        </select>
+        <div id="poke4"></div>
+        <select id="vv7" name="vv7" required style="display: none" onchange="cargarPk(4)">
+            <option hidden disabled selected value>Elige un pokémon</option>
+            <option>Meganium</option>
+            <option>Typhlosion</option>
+            <option>Feraligatr</option>
+            <option>Furret</option>
+            <option>Noctowl</option>
+            <option>Ledian</option>
+            <option>Ariados</option>
+            <option>Crobat</option>
+            <option>Lanturn</option>
+            <option>Togetic</option>
+            <option>Xatu</option>
+            <option>Ampharos</option>
+            <option>Bellossom</option>
+            <option>Azumarill</option>
+            <option>Sudowoodo</option>
+            <option>Politoed</option>
+            <option>Jumpluff</option>
+            <option>Aipom</option>
+            <option>Sunflora</option>
+            <option>Yanma</option>
+            <option>Quagsire</option>
+            <option>Espeon</option>
+            <option>Umbreon</option>
+            <option>Murkrow</option>
+            <option>Slowking</option>
+            <option>Misdreavus</option>
+            <option>Unown</option>
+            <option>Wobbuffet</option>
+            <option>Girafarig</option>
+            <option>Forretress</option>
+            <option>Dunsparce</option>
+            <option>Gligar</option>
+            <option>Steelix</option>
+            <option>Granbull</option>
+            <option>Qwilfish</option>
+            <option>Scizor</option>
+            <option>Shuckle</option>
+            <option>Heracross</option>
+            <option>Sneasel</option>
+            <option>Ursaring</option>
+            <option>Magcargo</option>
+            <option>Piloswine</option>
+            <option>Corsola</option>
+            <option>Octillery</option>
+            <option>Delibird</option>
+            <option>Mantine</option>
+            <option>Skarmory</option>
+            <option>Houndoom</option>
+            <option>Kingdra</option>
+            <option>Donphan</option>
+            <option>Porygon2</option>
+            <option>Stantler</option>
+            <option>Smeargle</option>
+            <option>Hitmontop</option>
+            <option>Miltank</option>
+            <option>Blissey</option>
+            <option>Tyranitar</option>
+        </select>
+        <div id="poke5"></div>
+        <select id="vv8" name="vv8" required style="display: none" onchange="cargarPk(5)">
+            <option hidden disabled selected value>Elige un pokémon</option>
+            <option>Meganium</option>
+            <option>Typhlosion</option>
+            <option>Feraligatr</option>
+            <option>Furret</option>
+            <option>Noctowl</option>
+            <option>Ledian</option>
+            <option>Ariados</option>
+            <option>Crobat</option>
+            <option>Lanturn</option>
+            <option>Togetic</option>
+            <option>Xatu</option>
+            <option>Ampharos</option>
+            <option>Bellossom</option>
+            <option>Azumarill</option>
+            <option>Sudowoodo</option>
+            <option>Politoed</option>
+            <option>Jumpluff</option>
+            <option>Aipom</option>
+            <option>Sunflora</option>
+            <option>Yanma</option>
+            <option>Quagsire</option>
+            <option>Espeon</option>
+            <option>Umbreon</option>
+            <option>Murkrow</option>
+            <option>Slowking</option>
+            <option>Misdreavus</option>
+            <option>Unown</option>
+            <option>Wobbuffet</option>
+            <option>Girafarig</option>
+            <option>Forretress</option>
+            <option>Dunsparce</option>
+            <option>Gligar</option>
+            <option>Steelix</option>
+            <option>Granbull</option>
+            <option>Qwilfish</option>
+            <option>Scizor</option>
+            <option>Shuckle</option>
+            <option>Heracross</option>
+            <option>Sneasel</option>
+            <option>Ursaring</option>
+            <option>Magcargo</option>
+            <option>Piloswine</option>
+            <option>Corsola</option>
+            <option>Octillery</option>
+            <option>Delibird</option>
+            <option>Mantine</option>
+            <option>Skarmory</option>
+            <option>Houndoom</option>
+            <option>Kingdra</option>
+            <option>Donphan</option>
+            <option>Porygon2</option>
+            <option>Stantler</option>
+            <option>Smeargle</option>
+            <option>Hitmontop</option>
+            <option>Miltank</option>
+            <option>Blissey</option>
+            <option>Tyranitar</option>
+        </select>
+        <div id="poke6"></div>
+        <select id="vv9" name="vv9" required style="display: none" onchange="cargarPk(6)">
+            <option hidden disabled selected value>Elige un pokémon</option>
+            <option>Meganium</option>
+            <option>Typhlosion</option>
+            <option>Feraligatr</option>
+            <option>Furret</option>
+            <option>Noctowl</option>
+            <option>Ledian</option>
+            <option>Ariados</option>
+            <option>Crobat</option>
+            <option>Lanturn</option>
+            <option>Togetic</option>
+            <option>Xatu</option>
+            <option>Ampharos</option>
+            <option>Bellossom</option>
+            <option>Azumarill</option>
+            <option>Sudowoodo</option>
+            <option>Politoed</option>
+            <option>Jumpluff</option>
+            <option>Aipom</option>
+            <option>Sunflora</option>
+            <option>Yanma</option>
+            <option>Quagsire</option>
+            <option>Espeon</option>
+            <option>Umbreon</option>
+            <option>Murkrow</option>
+            <option>Slowking</option>
+            <option>Misdreavus</option>
+            <option>Unown</option>
+            <option>Wobbuffet</option>
+            <option>Girafarig</option>
+            <option>Forretress</option>
+            <option>Dunsparce</option>
+            <option>Gligar</option>
+            <option>Steelix</option>
+            <option>Granbull</option>
+            <option>Qwilfish</option>
+            <option>Scizor</option>
+            <option>Shuckle</option>
+            <option>Heracross</option>
+            <option>Sneasel</option>
+            <option>Ursaring</option>
+            <option>Magcargo</option>
+            <option>Piloswine</option>
+            <option>Corsola</option>
+            <option>Octillery</option>
+            <option>Delibird</option>
+            <option>Mantine</option>
+            <option>Skarmory</option>
+            <option>Houndoom</option>
+            <option>Kingdra</option>
+            <option>Donphan</option>
+            <option>Porygon2</option>
+            <option>Stantler</option>
+            <option>Smeargle</option>
+            <option>Hitmontop</option>
+            <option>Miltank</option>
+            <option>Blissey</option>
+            <option>Tyranitar</option>
+        </select>
+        <div id="hola"></div>
+        <button id= "vv10" required style="display: none" type="submit">Ingresar</button>
+    </form>
+</body>
+<script>
+    var acero = {
+    nombre: "acero",
+    eficacia2: {
+        hada: 2,
+        hielo: 2,
+        roca: 2},
+    eficacia05: {
+        acero: 0.5,
+        agua: 0.5,
+        electrico: 0.5,
+        fuego: 0.5
+    },
+    eficacia0: {}
+}
+var agua = {
+    nombre: "agua",
+    eficacia2: {
+        fuego: 2,
+        roca: 2,
+        tierra: 2
+    },
+    eficacia05: {
+        agua: 0.5,
+        dragon: 0.5,
+        planta: 0.5
+    },
+    eficacia0: {}
+}
+var bicho = {
+    nombre: "bicho",
+    eficacia2: {
+        planta: 2,
+        psiquico: 2,
+        siniestro: 2
+    },
+    eficacia05: {
+        acero: 0.5,
+        fantasma: 0.5,
+        fuego: 0.5,
+        hada: 0.5,
+        lucha: 0.5,
+        veneno: 0.5,
+        volador: 0.5
+    },
+    eficacia0: {}
+}
+var dragon = {
+    nombre: "dragon",
+    eficacia2: {dragon: 2},
+    eficacia05: {acero: 0.5},
+    eficacia0: {hada: 0}
+}
+var electrico = {
+    nombre: "electrico",
+    eficacia2: {
+        agua: 2,
+        volador: 2
+    },
+    eficacia05: {
+        dragon: 0.5,
+        electrico: 0.5,
+        planta: 0.5
+    },
+    eficacia0: {tierra: 0}
+}
+var fantasma = {
+    nombre: "fantasma",
+    eficacia2: {
+        fantasma: 2,
+        psiquico: 2
+    },
+    eficacia05: {
+        acero: 0.5,
+        siniestro: 0.5
+    },
+    eficacia0: {normal: 0}
+}
+var fuego = {
+    nombre: "fuego",
+    eficacia2: {
+        acero: 2,
+        bicho: 2,
+        hielo: 2,
+        planta: 2
+    },
+    eficacia05: {
+        agua: 0.5,
+        dragon: 0.5,
+        fuego: 0.5,
+        roca: 0.5
+    },
+    eficacia0: {}
+}
+var hada = {
+    nombre: "hada",
+    eficacia2: {
+        dragon: 2,
+        lucha: 2,
+        siniestro: 2
+    },
+    eficacia05: {
+        acero: 0.5,
+        fuego: 0.5,
+        veneno: 0.5
+    },
+    eficacia0: {}
+}
+var hielo = {
+    nombre: "hielo",
+    eficacia2: {
+        dragon: 2,
+        planta: 2,
+        tierra: 2,
+        volador: 2
+    },
+    eficacia05: {
+        acero: 0.5,
+        agua: 0.5,
+        fuego: 0.5,
+        hielo: 0.5
+    },
+    eficacia0: {}
+}
+var lucha = {
+    nombre: "lucha",
+    eficacia2: {
+        acero: 2,
+        hielo: 2,
+        normal: 2,
+        roca: 2,
+        siniestro: 2
+    },
+    eficacia05: {
+        bicho: 0.5,
+        hada: 0.5,
+        psiquico: 0.5,
+        veneno: 0.5,
+        volador: 0.5
+    },
+    eficacia0: {fantasma: 0}
+}
+var normal = {
+    nombre: "normal",
+    eficacia2:{},
+    eficacia05: {
+        acero: 0.5,
+        roca: 0.5
+    },
+    eficacia0: {fantasma: 0}
+}
+var planta = {
+    nombre: "planta",
+    eficacia2: {
+        agua: 2,
+        roca: 2,
+        tierra: 2
+    },
+    eficacia05: {
+        acero: 0.5,
+        bicho: 0.5,
+        dragon: 0.5,
+        fuego: 0.5,
+        planta: 0.5,
+        veneno: 0.5,
+        volador: 0.5
+    },
+    eficacia0: {}
+}
+var psiquico = {
+    nombre: "psiquico",
+    eficacia2: {
+        lucha: 2,
+        veneno: 2
+    },
+    eficacia05: {
+        acero: 0.5,
+        psiquico: 0.5
+    },
+    eficacia0: {siniestro: 0}
+}
+var roca = {
+    nombre: "roca",
+    eficacia2: {
+        bicho: 2,
+        fuego: 2,
+        hielo: 2,
+        volador: 2
+    },
+    eficacia05: {
+        acero: 0.5,
+        lucha: 0.5,
+        tierra: 0.5
+    },
+    eficacia0: {}
+}
+var siniestro = {
+    nombre: "siniestro",
+    eficacia2: {
+        fantasma: 2,
+        psiquico: 2
+    },
+    eficacia05: {
+        hada: 0.5,
+        lucha: 0.5,
+        siniestro: 0.5
+    },
+    eficacia0: {}
+}
+var tierra = {
+    nombre: "tierra",
+    eficacia2: {
+        acero: 2,
+        electrico: 2,
+        fuego: 2,
+        roca: 2,
+        veneno: 2
+    },
+    eficacia05: {
+        bicho: 0.5,
+        planta: 0.5
+    },
+    eficacia0: {volador: 0}
+}
+var veneno = {
+    nombre: "veneno",
+    eficacia2: {
+        hada: 2,
+        planta: 2
+    },
+    eficacia05: {
+        fantasma: 0.5,
+        roca: 0.5,
+        tierra: 0.5,
+        veneno: 0.5
+    },
+    eficacia0: {acero: 0}
+}
+var volador = {
+    nombre: "volador",
+    eficacia2: {
+        bicho: 2,
+        lucha: 2,
+        planta: 2
+    },
+    eficacia05: {
+        acero: 0.5,
+        electrico: 0.5,
+        roca: 0.5
+    },
+    eficacia0: {}
+}
+var hojaAf = {
+    nombre: "Hoja afilada",
+    potencia: 55,
+    precisión: 95,
+    tipo: planta,
+    categoría: "físico",
+    pp: 25,
+}
+var bombL = {
+    nombre: "Bomba de lodo",
+    potencia: 90,
+    precisión: 100,
+    tipo: veneno,
+    categoría: "especial",
+    pp: 10,
+}
+var rayoS = {
+    nombre: "Rayo solar",
+    potencia: 120,
+    precisión: 100,
+    tipo: planta,
+    categoría: "especial",
+    pp: 10,
+    turnos: 2,
+}
+var terr = {
+    nombre: "Terremoto",
+    potencia: 100,
+    precisión: 100,
+    tipo: tierra,
+    categoría: "físico",
+    pp: 10,
+}
+var cuch = {
+    nombre: "Cuchillada",
+    potencia: 70,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 20,
+    eficacia: 1
+}
+var garD = {
+    nombre: "Garra dragón",
+    potencia: 80,
+    precisión: 100,
+    tipo: dragon,
+    categoría: "físico",
+    pp: 15,
+}
+var lanz = {
+    nombre: "Lanzallamas",
+    potencia: 95,
+    precisión: 100,
+    tipo: fuego,
+    categoría: "especial",
+    pp: 15,
+    efQ: 10,
+}
+var golpeA = {
+    nombre: "As Aéreo",
+    potencia: 60,
+    precisión: 1000,
+    tipo: volador,
+    categoría: "físico",
+    pp: 20,
+}
+var mord = {
+    nombre: "Mordisco",
+    potencia: 60,
+    precisión: 100,
+    tipo: siniestro,
+    categoría: "físico",
+    pp: 25,
+    retr: 30,
+}
+var hidrob = {
+    nombre: "Hidrobomba",
+    potencia: 120,
+    precisión: 80,
+    tipo: agua,
+    categoría: "especial",
+    pp: 5,
+}
+var surf = {
+    nombre: "Surf",
+    potencia: 95,
+    precisión: 100,
+    tipo: agua,
+    categoría: "especial",
+    pp: 15,
+}
+var cabezazo = {
+    nombre: "Cabezazo",
+    potencia: 100,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 10,
+}
+var tornado = {
+    nombre: "Tornado",
+    potencia: 40,
+    precisión: 100,
+    tipo: volador,
+    categoría: "especial",
+    pp: 35,
+}
+var psicorrayo = {
+    nombre: "Psicorrayo",
+    potencia: 65,
+    precisión: 100,
+    tipo: psiquico,
+    categoría: "especial",
+    pp: 20,
+}
+var vientoP = {
+    nombre: "Viento de plata",
+    potencia: 60,
+    precisión: 100,
+    tipo: bicho,
+    categoría: "especial",
+    pp: 5,
+}
+var zumbido = {
+    nombre: "Zumbido",
+    potencia: 90,
+    precisión: 100,
+    tipo: bicho,
+    categoría: "especial",
+    pp: 10,
+}
+var pinM = {
+    nombre: "Pin misil",
+    potencia: 25,
+    precisión: 95,
+    tipo: bicho,
+    categoría: "físico",
+    pp: 20,
+}
+var pinM = {
+    nombre: "Pin misil",
+    potencia: 25,
+    precisión: 95,
+    tipo: bicho,
+    categoría: "físico",
+    pp: 20,
+}
+var puyaN = {
+    nombre: "Puya nociva",
+    potencia: 80,
+    precisión: 100,
+    tipo: veneno,
+    categoría: "físico",
+    pp: 20,
+    env: 30,
+}
+var enfado = {
+    nombre: "Enfado",
+    potencia: 120,
+    precisión: 100,
+    tipo: dragon,
+    categoría: "físico",
+    pp: 10,
+}
+var esfuerzo = {
+    nombre: "Esfuerzo",
+    potencia: "igualar",
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 5,
+}
+var ataqueAla = {
+    nombre: "Ataque ala",
+    potencia: 60,
+    precisión: 100,
+    tipo: volador,
+    categoría: "físico",
+    pp: 35,
+}
+var ciclon = {
+    nombre: "Ciclón",
+    potencia: 40,
+    precisión: 100,
+    tipo: dragon,
+    categoría: "especial",
+    pp: 20,
+    retro: 20
+}
+var alaAcero = {
+    nombre: "Ala de acero",
+    potencia: 70,
+    precisión: 90,
+    tipo: acero,
+    categoría: "físico",
+    pp: 25,
+    subirD: 10
+}
+var hiperC = {
+    nombre: "Hiper colmillo",
+    potencia: 80,
+    precisión: 90,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    retro: 10
+}
+var trit = {
+    nombre: "Triturar",
+    potencia: 80,
+    precisión: 100,
+    tipo: siniestro,
+    categoría: "físico",
+    pp: 15,
+    bajarD: 20
+}
+var superd = {
+    nombre: "Superdiente",
+    potencia: "mitad",
+    precisión: 90,
+    tipo: normal,
+    categoría: "físico",
+    pp: 10,
+    retro: 10
+}
+var ataqueRap = {
+    nombre: "Ataque rápido",
+    potencia: 40,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 30,
+}
+var perse = {
+    nombre: "Persecución",
+    potencia: 40,
+    precisión: 100,
+    tipo: siniestro,
+    categoría: "físico",
+    pp: 20,
+}
+var picoT = {
+    nombre: "Pico Taladro",
+    potencia: 80,
+    precisión: 100,
+    tipo: volador,
+    categoría: "físico",
+    pp: 20,
+}
+var acido = {
+    nombre: "Ácido",
+    potencia: 40,
+    precisión: 100,
+    tipo: veneno,
+    categoría: "especial",
+    pp: 30,
+    bajarDs: 10
+}
+var colmH = {
+    nombre: "Colmillo Hielo",
+    potencia: 65,
+    precisión: 95,
+    tipo: hielo,
+    categoría: "físico",
+    pp: 15,
+    retr: 10,
+    congelar: 10
+}
+var avala = {
+    nombre: "Avalancha",
+    potencia: 75,
+    precisión: 90,
+    tipo: roca,
+    categoría: "físico",
+    pp: 10,
+    retr: 30,
+}
+var rapidez = {
+    nombre: "Rapidez",
+    potencia: 60,
+    precisión: 200,
+    tipo: normal,
+    categoría: "especial",
+    pp: 20,
+}
+var placajeE = {
+    nombre: "Placaje eléctrico",
+    potencia: 120,
+    precisión: 100,
+    tipo: electrico,
+    categoría: "físico",
+    pp: 15,
+    paralizar: 10,
+}
+var rayo = {
+    nombre: "Rayo",
+    potencia: 95,
+    precisión: 100,
+    tipo: electrico,
+    categoría: "especial",
+    pp: 15,
+    paralizar: 10,
+}
+var trueno = {
+    nombre: "Trueno",
+    potencia: 120,
+    precisión: 70,
+    tipo: electrico,
+    categoría: "especial",
+    pp: 10,
+    paralizar: 30,
+}
+var puñoT = {
+    nombre: "Puño trueno",
+    potencia: 75,
+    precisión: 100,
+    tipo: electrico,
+    categoría: "físico",
+    pp: 15,
+    paralizar: 10,
+}
+var bucleA = {
+    nombre: "Bucle arena",
+    potencia: 15,
+    precisión: 85,
+    tipo: tierra,
+    categoría: "físico",
+    pp: 15,
+    atrapar: 5,
+}
+var excavar = {
+    nombre: "Excavar",
+    potencia: 80,
+    precisión: 100,
+    tipo: tierra,
+    categoría: "físico",
+    pp: 10,
+    turnos: 2,
+}
+var golpeC = {
+    nombre: "Golpe cuerpo",
+    potencia: 85,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    paralizar: 30
+}
+var dobleP = {
+    nombre: "Doble patada",
+    potencia: 30,
+    precisión: 100,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 30,
+}
+var golpe = {
+    nombre: "Golpe",
+    potencia: 90,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 20,
+    turnSconf: 3,
+}
+var megac = {
+    nombre: "Megacuerno",
+    potencia: 120,
+    precisión: 85,
+    tipo: bicho,
+    categoría: "físico",
+    pp: 10,
+}
+var dobleB = {
+    nombre: "Doble bofetón",
+    potencia: 15,
+    precisión: 85,
+    tipo: normal,
+    categoría: "físico",
+    pp: 10,
+    veces: 2.5
+}
+var metron = {
+    nombre: "Metrónomo",
+    potencia: 70,
+    precisión: 100,
+    tipo: dragon,
+    categoría: "especial",
+    pp: 15,
+}
+var luzL = {
+    nombre: "Luz lunar",
+    potencia: "curar mitad",
+    precisión: 200,
+    tipo: hada,
+    categoría: "especial",
+    pp: 5,
+}
+var puñoM = {
+    nombre: "Puño meteoro",
+    potencia: 100,
+    precisión: 85,
+    tipo: acero,
+    categoría: "físico",
+    pp: 10,
+    subirA: 20,
+}
+var fuegoF = {
+    nombre: "Fuego fatuo",
+    potencia: 0,
+    precisión: 75,
+    tipo: fuego,
+    categoría: "estado",
+    pp: 15,
+    efecto: "quemar"
+}
+var giroF = {
+    nombre: "Giro fuego",
+    potencia: 15,
+    precisión: 70,
+    tipo: fuego,
+    categoría: "especial",
+    pp: 15,
+}
+var vozarron = {
+    nombre: "Vozarrón",
+    potencia: 90,
+    precisión: 100,
+    tipo: normal,
+    categoría: "especial",
+    pp: 10,
+}
+var dobleF = {
+    nombre: "Doble filo",
+    potencia: 120,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    dañoR: 0.25
+}
+var polvoV = {
+    nombre: "Polvo veneno",
+    potencia: 0,
+    precisión: 75,
+    tipo: veneno,
+    categoría: "estado",
+    pp: 35,
+    efecto: "envenenar"
+}
+var paraliz = {
+    nombre: "Paralizador",
+    potencia: 0,
+    precisión: 75,
+    tipo: planta,
+    categoría: "estado",
+    pp: 30,
+    efecto: "paralizar"
+}
+var somn = {
+    nombre: "Somnífero",
+    potencia: 0,
+    precisión: 75,
+    tipo: planta,
+    categoría: "estado",
+    pp: 15,
+    efecto: "dormir"
+}
+var espora = {
+    nombre: "Espora",
+    potencia: 0,
+    precisión: 100,
+    tipo: planta,
+    categoría: "estado",
+    pp: 15,
+    efecto: "dormir"
+}
+var gigad = {
+    nombre: "Gigadrenado",
+    potencia: 60,
+    precisión: 100,
+    tipo: planta,
+    categoría: "especial",
+    pp: 5,
+    efecto: "recuperar 50"
+}
+var aromaterapia = {
+    nombre: "Aromaterapia",
+    potencia: 0,
+    precisión: 200,
+    tipo: planta,
+    categoría: "estado",
+    pp: 5,
+    efecto: "curar equipo"
+}
+var chupavidas = {
+    nombre: "Chupavidas",
+    potencia: 20,
+    precisión: 100,
+    tipo: bicho,
+    categoría: "físico",
+    pp: 15,
+    efecto: "recuperar 50"
+}
+var psiquic = {
+    nombre: "Psíquico",
+    potencia: 90,
+    precisión: 100,
+    tipo: psiquico,
+    categoría: "especial",
+    pp: 10,
+    efecto: "10 bajarDs"
+}
+var ataqueArena = {
+    nombre: "Ataque arena",
+    potencia: 0,
+    precisión: 100,
+    tipo: tierra,
+    categoría: "estado",
+    pp: 15,
+    efecto: "bajar precisión"
+}
+var finta = {
+    nombre: "Finta",
+    potencia: 60,
+    precisión: 200,
+    tipo: siniestro,
+    categoría: "físico",
+    pp: 20
+}
+var golpesF = {
+    nombre: "Golpes furia",
+    potencia: 18,
+    precisión: 80,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    efecto: "veces 2-5"
+}
+var confusion = {
+    nombre: "Confusión",
+    potencia: 50,
+    precisión: 100,
+    tipo: psiquico,
+    categoría: "especial",
+    pp: 25,
+    efecto: "10 confundir"
+}
+var hidrop = {
+    nombre: "Hidropulso",
+    potencia: 60,
+    precisión: 100,
+    tipo: agua,
+    categoría: "especial",
+    pp: 20,
+    efecto: "20 confundir"
+}
+var amnesia = {
+    nombre: "Amnesia",
+    potencia: 0,
+    precisión: 200,
+    tipo: psiquico,
+    categoría: "especial",
+    pp: 20,
+    efecto: "subir Dsx2"
+}
+var movS = {
+    nombre: "Movimiento sísmico",
+    potencia: 0,
+    precisión: 100,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 20,
+    efecto: "salud2-nivel1"
+}
+var tajoC = {
+    nombre: "Tajo cruzado",
+    potencia: 100,
+    precisión: 80,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 5,
+    efecto: "critico 12.5"
+}
+var chirrido = {
+    nombre: "Chirrido",
+    potencia: 0,
+    precisión: 85,
+    tipo: normal,
+    categoría: "estado",
+    pp: 40,
+    efecto: "bajarD x2"
+}
+var colmilloI = {
+    nombre: "Colmillo ígneo",
+    potencia: 65,
+    precisión: 95,
+    tipo: fuego,
+    categoría: "físico",
+    pp: 15,
+    efecto: "10% retroceder 10% quemar"
+}
+var derribo = {
+    nombre: "Derribo",
+    potencia: 90,
+    precisión: 85,
+    tipo: normal,
+    categoría: "físico",
+    pp: 20,
+    efecto: "1/4 del daño"
+}
+var ruedaF = {
+    nombre: "Rueda fuego",
+    potencia: 60,
+    precisión: 100,
+    tipo: fuego,
+    categoría: "físico",
+    pp: 25,
+    efecto: "quemar 10, descongelar"
+}
+var velX = {
+    nombre: "Velocidad extrema",
+    potencia: 80,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 5
+}
+var hipnosis = {
+    nombre: "Hipnosis",
+    potencia: 0,
+    precisión: 70,
+    tipo: psiquico,
+    categoría: "estado",
+    pp: 20,
+    efecto: "dormir"
+}
+var pistolaA = {
+    nombre: "Pistola agua",
+    potencia: 40,
+    precisión: 100,
+    tipo: agua,
+    categoría: "especial",
+    pp: 25,
+    efecto: ""
+}
+var sumision = {
+    nombre: "Sumisión",
+    potencia: 80,
+    precisión: 80,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 20,
+    efecto: "1/4 daño"
+}
+var puñoD = {
+    nombre: "Puño dinámico",
+    potencia: 100,
+    precisión: 50,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 5,
+    efecto: "confusión"
+}
+var kinetico = {
+    nombre: "Kinético",
+    potencia: 0,
+    precisión: 80,
+    tipo: psiquico,
+    categoría: "estado",
+    pp: 15,
+    efecto: "bajar precisión"
+}
+var kinetico = {
+    nombre: "Kinético",
+    potencia: 0,
+    precisión: 80,
+    tipo: psiquico,
+    categoría: "estado",
+    pp: 15,
+    efecto: "bajar precisión"
+}
+var recuperacion = {
+    nombre: "Recuperación",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 20,
+    efecto: "recuperar mitad"
+}
+var reflejo = {
+    nombre: "Reflejo",
+    potencia: 0,
+    precisión: 200,
+    tipo: psiquico,
+    categoría: "estado",
+    pp: 20,
+    efecto: "daño fisico/2",
+    turnos: 5
+}
+var tiroV = {
+    nombre: "Tiro vital",
+    potencia: 70,
+    precisión: 200,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 10,
+    efecto: ""
+}
+var fuerza = {
+    nombre: "Fuerza",
+    potencia: 80,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    efecto: ""
+}
+var constriccion = {
+    nombre: "Constricción",
+    potencia: 15,
+    precisión: 85,
+    tipo: normal,
+    categoría: "físico",
+    pp: 20,
+    efecto: "2-5"
+}
+var hojaAg = {
+    nombre: "Hoja aguda",
+    potencia: 70,
+    precisión: 100,
+    tipo: planta,
+    categoría: "físico",
+    pp: 15,
+    efecto: "critico"
+}
+var desenrollar = {
+    nombre: "Desenrollar",
+    potencia: 30,
+    precisión: 90,
+    tipo: roca,
+    categoría: "físico",
+    pp: 20,
+    efecto: "5t x2"
+}
+var pedrada = {
+    nombre: "Pedrada",
+    potencia: 25,
+    precisión: 80,
+    tipo: roca,
+    categoría: "físico",
+    pp: 10,
+    efecto: "2-5v"
+}
+var explosion = {
+    nombre: "Explosión",
+    potencia: 250,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 5,
+    efecto: "explosion"
+}
+var ataqueF = {
+    nombre: "Ataque furia",
+    potencia: 15,
+    precisión: 85,
+    tipo: normal,
+    categoría: "físico",
+    pp: 5,
+    efecto: "2-5"
+}
+var bote = {
+    nombre: "Bote",
+    potencia: 85,
+    precisión: 85,
+    tipo: volador,
+    categoría: "físico",
+    pp: 5,
+    efecto: "vuelo 30 paraliz"
+}
+var chispa = {
+    nombre: "Chispa",
+    potencia: 65,
+    precisión: 100,
+    tipo: electrico,
+    categoría: "físico",
+    pp: 20,
+    efecto: "30 paraliz"
+}
+var fijarB = {
+    nombre: "Fijar blanco",
+    potencia: 0,
+    precisión: 100,
+    tipo: normal,
+    categoría: "estado",
+    pp: 5,
+    efecto: "prec 100"
+}
+var electrocañon = {
+    nombre: "Electrocañón",
+    potencia: 100,
+    precisión: 50,
+    tipo: electrico,
+    categoría: "especial",
+    pp: 5,
+    efecto: "paraliz 100"
+}
+var danzaE = {
+    nombre: "Danza espada",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 30,
+    efecto: "subirA x2"
+}
+var falsot = {
+    nombre: "Falsotortazo",
+    potencia: 40,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 40,
+    efecto: "1ps"
+}
+var furia = {
+    nombre: "Furia",
+    potencia: 20,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 20,
+    efecto: "nose"
+}
+var alboroto = {
+    nombre: "Alboroto",
+    potencia: 50,
+    precisión: 100,
+    tipo: normal,
+    categoría: "especial",
+    pp: 10,
+    efecto: "2-5t"
+}
+var tria = {
+    nombre: "Triataque",
+    potencia: 80,
+    precisión: 100,
+    tipo: normal,
+    categoría: "especial",
+    pp: 10,
+    efecto: "quemar,p,c 20"
+}
+var rayoAu = {
+    nombre: "Rayo aurora",
+    potencia: 65,
+    precisión: 100,
+    tipo: hielo,
+    categoría: "especial",
+    pp: 20,
+    efecto: "bajarA 10"
+}
+var frioP = {
+    nombre: "Frío polar",
+    potencia: 2000,
+    precisión: 30,
+    tipo: hielo,
+    categoría: "especial",
+    pp: 5,
+    efecto: "instaK"
+}
+var armaduraA = {
+    nombre: "Armadura ácida",
+    potencia: 0,
+    precisión: 200,
+    tipo: veneno,
+    categoría: "estado",
+    pp: 40,
+    efecto: "subirD x2"
+}
+var refugio = {
+    nombre: "Refugio",
+    potencia: 0,
+    precisión: 200,
+    tipo: agua,
+    categoría: "estado",
+    pp: 40,
+    efecto: "subirD x1"
+}
+var tenaza = {
+    nombre: "Tenaza",
+    potencia: 35,
+    precisión: 75,
+    tipo: agua,
+    categoría: "físico",
+    pp: 10,
+    efecto: "2-5t"
+}
+var clavoC = {
+    nombre: "Clavo cañón",
+    potencia: 20,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    efecto: "2-5v"
+}
+var puñoS = {
+    nombre: "Puño sombra",
+    potencia: 60,
+    precisión: 200,
+    tipo: fantasma,
+    categoría: "físico",
+    pp: 20
+}
+var bolaS = {
+    nombre: "Bola sombra",
+    potencia: 80,
+    precisión: 100,
+    tipo: fantasma,
+    categoría: "especial",
+    pp: 15,
+    efecto: "bajarDs 20"
+}
+var comeSu = {
+    nombre: "Come sueños",
+    potencia: 100,
+    precisión: 100,
+    tipo: psiquico,
+    categoría: "especial",
+    pp: 15,
+    efecto: "recupera50% dorm"
+}
+var colaF = {
+    nombre: "Cola férrea",
+    potencia: 100,
+    precisión: 75,
+    tipo: acero,
+    categoría: "físico",
+    pp: 15,
+    efecto: "bajarD 30"
+}
+var meditacion = {
+    nombre: "Meditación",
+    potencia: 0,
+    precisión: 100,
+    tipo: psiquico,
+    categoría: "estado",
+    pp: 40,
+    efecto: "subirA"
+}
+var golpeCa = {
+    nombre: "Golpe cabeza",
+    potencia: 70,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    efecto: "retro 30"
+}
+var martillazo = {
+    nombre: "Martillazo",
+    potencia: 90,
+    precisión: 85,
+    tipo: agua,
+    categoría: "físico",
+    pp: 10,
+    efecto: "prob critico"
+}
+var pisoton = {
+    nombre: "Pisotón",
+    potencia: 65,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 20,
+    efecto: "retro 30"
+}
+var proteccion = {
+    nombre: "Protección",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 10,
+    efecto: "50-"
+}
+var guillotina = {
+    nombre: "Guillotina",
+    potencia: 2000,
+    precisión: 30,
+    tipo: normal,
+    categoría: "físico",
+    pp: 5,
+    efecto: "instaK"
+}
+var bombaH = {
+    nombre: "Bomba huevo",
+    potencia: 100,
+    precisión: 75,
+    tipo: normal,
+    categoría: "físico",
+    pp: 10,
+    efecto: ""
+}
+var huesoP = {
+    nombre: "Hueso palo",
+    potencia: 65,
+    precisión: 85,
+    tipo: tierra,
+    categoría: "físico",
+    pp: 20,
+    efecto: "retroceder10"
+}
+var huesomerang = {
+    nombre: "Huesomerang",
+    potencia: 50,
+    precisión: 90,
+    tipo: tierra,
+    categoría: "físico",
+    pp: 10,
+    efecto: "2v"
+}
+var ataqueO = {
+    nombre: "Ataque óseo",
+    potencia: 25,
+    precisión: 80,
+    tipo: tierra,
+    categoría: "físico",
+    pp: 10,
+    efecto: "2-5v"
+}
+var patadaS = {
+    nombre: "Patada salto",
+    potencia: 70,
+    precisión: 95,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 25,
+    efecto: "fallar/prot -1/8"
+}
+var patadaSA = {
+    nombre: "Patada salto alta",
+    potencia: 85,
+    precisión: 90,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 10,
+    efecto: "fallar/prot -daño"
+}
+var patadaSA = {
+    nombre: "Patada salto alta",
+    potencia: 85,
+    precisión: 90,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 10,
+    efecto: "fallar/prot -daño"
+}
+var aguante = {
+    nombre: "Aguante",
+    potencia: 0,
+    precisión: 100,
+    tipo: normal,
+    categoría: "estado",
+    pp: 10,
+    efecto: "1ps prec/2"
+}
+var megapatada = {
+    nombre: "Megapatada",
+    potencia: 120,
+    precisión: 75,
+    tipo: normal,
+    categoría: "físico",
+    pp: 5,
+    efecto: ""
+}
+var puñoH = {
+    nombre: "Puño hielo",
+    potencia: 75,
+    precisión: 100,
+    tipo: hielo,
+    categoría: "físico",
+    pp: 15,
+    efecto: "congelar 10"
+}
+var puñoF = {
+    nombre: "Puño fuego",
+    potencia: 75,
+    precisión: 100,
+    tipo: fuego,
+    categoría: "físico",
+    pp: 15,
+    efecto: "quemar 10"
+}
+var megapuño = {
+    nombre: "Megapuño",
+    potencia: 80,
+    precisión: 85,
+    tipo: normal,
+    categoría: "físico",
+    pp: 20,
+    efecto: ""
+}
+var polucion = {
+    nombre: "Polución",
+    potencia: 20,
+    precisión: 70,
+    tipo: veneno,
+    categoría: "especial",
+    pp: 20,
+    efecto: "env 40"
+}
+var residuos = {
+    nombre: "Residuos",
+    potencia: 65,
+    precisión: 100,
+    tipo: veneno,
+    categoría: "especial",
+    pp: 20,
+    efecto: "env30"
+}
+var pantallaH = {
+    nombre: "Pantalla de humo",
+    potencia: 0,
+    precisión: 100,
+    tipo: normal,
+    categoría: "estado",
+    pp: 20,
+    efecto: "bajar Prec"
+}
+var megaa = {
+    nombre: "Megaagotar",
+    potencia: 40,
+    precisión: 100,
+    tipo: planta,
+    categoría: "especial",
+    pp: 10,
+    efecto: "recupera %50ps"
+}
+var atizar = {
+    nombre: "Atizar",
+    potencia: 80,
+    precisión: 75,
+    tipo: normal,
+    categoría: "físico",
+    pp: 20,
+    efecto: ""
+}
+var cornada = {
+    nombre: "Cornada",
+    potencia: 65,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 25,
+    efecto: ""
+}
+var descanso = {
+    nombre: "Descanso",
+    potencia: 0,
+    precisión: 200,
+    tipo: psiquico,
+    categoría: "especial",
+    pp: 10,
+    efecto: "2t"
+}
+var perforador = {
+    nombre: "Perforador",
+    potencia: 1000,
+    precisión: 30,
+    tipo: normal,
+    categoría: "físico",
+    pp: 5,
+    efecto: "instaK"
+}
+var puñoCo = {
+    nombre: "Puño cometa",
+    potencia: 18,
+    precisión: 85,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    efecto: "2-5v"
+}
+var puñoMa = {
+    nombre: "Puño mareo",
+    potencia: 70,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 10,
+    efecto: "confundir 20"
+}
+var inversion = {
+    nombre: "Inversión",
+    potencia: 20,
+    precisión: 100,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 15,
+    efecto: "segun ps"
+}
+var cascada = {
+    nombre: "Cascada",
+    potencia: 80,
+    precisión: 100,
+    tipo: agua,
+    categoría: "físico",
+    pp: 15,
+    efecto: ""
+}
+var rayoBu = {
+    nombre: "Rayo burbuja",
+    potencia: 65,
+    precisión: 100,
+    tipo: agua,
+    categoría: "especial",
+    pp: 20,
+    efecto: ""
+}
+var besoA = {
+    nombre: "Beso amoroso",
+    potencia: 0,
+    precisión: 75,
+    tipo: normal,
+    categoría: "estado",
+    pp: 10,
+    efecto: "duerme"
+}
+var pantallaLuz = {
+    nombre: "Pantalla de luz",
+    potencia: 0,
+    precisión: 200,
+    tipo: psiquico,
+    categoría: "estado",
+    pp: 10,
+    efecto: "reduce 1/2 movsp 5t"
+}
+var rayoCo = {
+    nombre: "Rayo confuso",
+    potencia: 0,
+    precisión: 100,
+    tipo: fantasma,
+    categoría: "estado",
+    pp: 10,
+    efecto: "confusion"
+}
+var fortaleza = {
+    nombre: "Fortaleza",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 30,
+    efecto: "subirD"
+}
+var furiaDr = {
+    nombre: "Furia dragón",
+    potencia: 0,
+    precisión: 100,
+    tipo: dragon,
+    categoría: "especial",
+    pp: 10,
+    efecto: "40ps"
+}
+var hiperrayo = {
+    nombre: "Hiperrayo",
+    potencia: 150,
+    precisión: 90,
+    tipo: normal,
+    categoría: "especial",
+    pp: 5,
+    efecto: "dps turno"
+}
+var rayoH = {
+    nombre: "Rayo hielo",
+    potencia: 95,
+    precisión: 100,
+    tipo: hielo,
+    categoría: "especial",
+    pp: 10,
+    efecto: "congelar 10"
+}
+var veloS = {
+    nombre: "Velo sagrado",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 25,
+    efecto: "evita estado"
+}
+var transformacion = {
+    nombre: "Transformación",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 10,
+    efecto: "Transformación"
+}
+var impact = {
+    nombre: "Impactrueno",
+    potencia: 40,
+    precisión: 100,
+    tipo: electrico,
+    categoría: "especial",
+    pp: 30,
+    efecto: "paraliz 10"
+}
+var ondaT = {
+    nombre: "Onda trueno",
+    potencia: 0,
+    precisión: 100,
+    tipo: electrico,
+    categoría: "estado",
+    pp: 20,
+    efecto: "paraliz excepto inm"
+}
+var ascuas = {
+    nombre: "Ascuas",
+    potencia: 40,
+    precisión: 100,
+    tipo: fuego,
+    categoría: "especial",
+    pp: 25,
+    efecto: "quemar 10"
+}
+var disparoL = {
+    nombre: "Disparo lodo",
+    potencia: 55,
+    precisión: 95,
+    tipo: tierra,
+    categoría: "especial",
+    pp: 15,
+    efecto: ""
+}
+var poderP = {
+    nombre: "Poder pasado",
+    potencia: 60,
+    precisión: 100,
+    tipo: roca,
+    categoría: "especial",
+    pp: 5,
+    efecto: "subir A,D,As,Ds"
+}
+var restriccion = {
+    nombre: "Restricción",
+    potencia: 10,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 35,
+    efecto: ""
+}
+var telaraña = {
+    nombre: "Telaraña",
+    potencia: 0,
+    precisión: 200,
+    tipo: bicho,
+    categoría: "estado",
+    pp: 10,
+    efecto: "no cambiar"
+}
+var aireAf = {
+    nombre: "Aire afilado",
+    potencia: 55,
+    precisión: 95,
+    tipo: volador,
+    categoría: "especial",
+    pp: 25,
+    efecto: "critico"
+}
+var maldeojo = {
+    nombre: "Mal de ojo",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 5,
+    efecto: "no cambiar"
+}
+var besoD = {
+    nombre: "Beso dulce",
+    potencia: 0,
+    precisión: 75,
+    tipo: hada,
+    categoría: "estado",
+    pp: 10,
+    efecto: "confusion"
+}
+var tinieblas = {
+    nombre: "Tinieblas",
+    potencia: 0,
+    precisión: 100,
+    tipo: fantasma,
+    categoría: "especial",
+    pp: 15,
+    efecto: "menos Nivel"
+}
+var deseo = {
+    nombre: "Deseo",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 10,
+    efecto: "recupera 50%"
+}
+var premonicion = {
+    nombre: "Premonición",
+    potencia: 80,
+    precisión: 90,
+    tipo: psiquico,
+    categoría: "especial",
+    pp: 15,
+    efecto: "3er turno"
+}
+var dulceA = {
+    nombre: "Dulce aroma",
+    potencia: 0,
+    precisión: 100,
+    tipo: normal,
+    categoría: "estado",
+    pp: 20,
+    efecto: "bajaEv"
+}
+var hojaMa = {
+    nombre: "Hoja mágica",
+    potencia: 60,
+    precisión: 200,
+    tipo: planta,
+    categoría: "especial",
+    pp: 20,
+    efecto: ""
+}
+var danzaP = {
+    nombre: "Danza pétalo",
+    potencia: 70,
+    precisión: 100,
+    tipo: planta,
+    categoría: "especial",
+    pp: 20,
+    efecto: "3-4t y conf"
+}
+var patadaBa = {
+    nombre: "Patada baja",
+    potencia: 50,
+    precisión: 90,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 20,
+    efecto: "30 retr"
+}
+var cantoM = {
+    nombre: "Canto mortal",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 5,
+    efecto: "3t muerte"
+}
+var contoneo = {
+    nombre: "Contoneo",
+    potencia: 0,
+    precisión: 90,
+    tipo: normal,
+    categoría: "estado",
+    pp: 15,
+    efecto: "subirAx2 autoConf"
+}
+var drenadoras = {
+    nombre: "Drenadoras",
+    potencia: 0,
+    precisión: 90,
+    tipo: planta,
+    categoría: "estado",
+    pp: 10,
+    efecto: "saca 1/8"
+}
+var cosquillas = {
+    nombre: "Cosquillas",
+    potencia: 0,
+    precisión: 100,
+    tipo: normal,
+    categoría: "estado",
+    pp: 20,
+    efecto: "bajarD-A"
+}
+var recurrente = {
+    nombre: "Recurrente",
+    potencia: 10,
+    precisión: 100,
+    tipo: planta,
+    categoría: "físico",
+    pp: 30,
+    efecto: "2-5v ptxgolpe"
+}
+var deteccion = {
+    nombre: "Detección",
+    potencia: 0,
+    precisión: 100,
+    tipo: lucha,
+    categoría: "estado",
+    pp: 5,
+    efecto: "proteccion 50-"
+}
+var supers = {
+    nombre: "Supersónico",
+    potencia: 0,
+    precisión: 55,
+    tipo: normal,
+    categoría: "estado",
+    pp: 20,
+    efecto: "confusion"
+}
+var bostezo = {
+    nombre: "Bostezo",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 10,
+    efecto: "duerme prox turno"
+}
+var divideD = {
+    nombre: "Divide dolor",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 20,
+    efecto: "Divide dolor"
+}
+var poderOc = {
+    nombre: "Divide dolor",
+    potencia: 60,
+    precisión: 100,
+    tipo: normal,
+    categoría: "especial",
+    pp: 15,
+    efecto: "poderOc"
+}
+var contraA = {
+    nombre: "Contraataque",
+    potencia: 0,
+    precisión: 100,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 20,
+    efecto: "devuelve doble fisico"
+}
+var mantoE = {
+    nombre: "Manto espejo",
+    potencia: 0,
+    precisión: 100,
+    tipo: psiquico,
+    categoría: "especial",
+    pp: 20,
+    efecto: "devuelve doble especial"
+}
+var mismoD = {
+    nombre: "Mismo destino",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 15,
+    efecto: "mismoD"
+}
+var giroRap = {
+    nombre: "Giro rápido",
+    potencia: 20,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 40,
+    efecto: "estado2normal"
+}
+var venganza = {
+    nombre: "Venganza",
+    potencia: 20,
+    precisión: 100,
+    tipo: normal,
+    categoría: "físico",
+    pp: 40,
+    efecto: "2t x2daño"
+}
+var deslumbrar = {
+    nombre: "Deslumbrar",
+    potencia: 0,
+    precisión: 75,
+    tipo: normal,
+    categoría: "estado",
+    pp: 30,
+    efecto: "paraliz"
+}
+var lengue = {
+    nombre: "Lengüetazo",
+    potencia: 20,
+    precisión: 100,
+    tipo: fantasma,
+    categoría: "físico",
+    pp: 30,
+    efecto: "paraliz 30"
+}
+var garraM = {
+    nombre: "Garra metal",
+    potencia: 50,
+    precisión: 95,
+    tipo: acero,
+    categoría: "físico",
+    pp: 35,
+    efecto: "subirA 10"
+}
+var corteF = {
+    nombre: "Corte furia",
+    potencia: 10,
+    precisión: 95,
+    tipo: bicho,
+    categoría: "físico",
+    pp: 20,
+    efecto: "x2 cada vez"
+}
+var ronquido = {
+    nombre: "Ronquido",
+    potencia: 40,
+    precisión: 100,
+    tipo: normal,
+    categoría: "especial",
+    pp: 15,
+    efecto: "30 retr"
+}
+var nieveP = {
+    nombre: "Nieve polvo",
+    potencia: 40,
+    precisión: 100,
+    tipo: hielo,
+    categoría: "especial",
+    pp: 25,
+    efecto: "10 cong"
+}
+var pulpoc = {
+    nombre: "Pulpocañón",
+    potencia: 65,
+    precisión: 85,
+    tipo: agua,
+    categoría: "especial",
+    pp: 10,
+    efecto: "50prec"
+}
+var presente = {
+    nombre: "Presente",
+    potencia: 0,
+    precisión: 90,
+    tipo: normal,
+    categoría: "físico",
+    pp: 15,
+    efecto: "presente"
+}
+var esquema = {
+    nombre: "Esquema",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 1,
+    efecto: "esquema"
+}
+var tripleP = {
+    nombre: "Triple patada",
+    potencia: 10,
+    precisión: 90,
+    tipo: lucha,
+    categoría: "físico",
+    pp: 10,
+    efecto: "tripleP"
+}
+var batido = {
+    nombre: "Batido",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 10,
+    efecto: "restaura 50%"
+}
+var amortiguador = {
+    nombre: "Amortiguador",
+    potencia: 0,
+    precisión: 200,
+    tipo: normal,
+    categoría: "estado",
+    pp: 10,
+    efecto: "restaura 50%"
+}
+var venusaur = {
+    nivel: 50,
+    nombre: "Venusaur",
+    tipo: planta,
+    tipo2: veneno,
+    ata1: hojaAf,
+    ata2: bombL,
+    ata3: rayoS,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 82,
+    dff: 83,
+    ats: 100,
+    dfs: 100,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 1
+}
+var charizard = {
+    nivel: 50,
+    nombre: "Charizard",
+    tipo: fuego,
+    tipo2: volador,
+    ata1: cuch,
+    ata2: lanz,
+    ata3: garD,
+    ata4: golpeA,
+    estado: "normal",
+    estado2: [],
+    ps: 78,
+    atf: 84,
+    dff: 78,
+    ats: 109,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 3,
+    eds: 0
+}
+var blastoise = {
+    nivel: 50,
+    nombre: "Blastoise",
+    tipo: agua,
+    tipo2: agua,
+    ata1: mord,
+    ata2: hidrob,
+    ata3: surf,
+    ata4: cabezazo,
+    estado: "normal",
+    estado2: [],
+    ps: 79,
+    atf: 83,
+    dff: 100,
+    ats: 85,
+    dfs: 105,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 3
+}
+var butterfree = {
+    nivel: 50,
+    nombre: "Butterfree",
+    tipo: bicho,
+    tipo2: volador,
+    ata1: tornado,
+    ata2: psicorrayo,
+    ata3: vientoP,
+    ata4: zumbido,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 45,
+    dff: 50,
+    ats: 90,
+    dfs: 80,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 1
+}
+var beedrill = {
+    nivel: 50,
+    nombre: "Beedrill",
+    tipo: bicho,
+    tipo2: veneno,
+    ata1: pinM,
+    ata2: puyaN,
+    ata3: enfado,
+    ata4: esfuerzo,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 90,
+    dff: 40,
+    ats: 45,
+    dfs: 80,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 1
+}
+var pidgeot = {
+    nivel: 50,
+    nombre: "Pidgeot",
+    tipo: normal,
+    tipo2: volador,
+    ata1: ataqueAla,
+    ata2: ciclon,
+    ata3: golpeA,
+    ata4: alaAcero,
+    estado: "normal",
+    estado2: [],
+    ps: 83,
+    atf: 80,
+    dff: 75,
+    ats: 70,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var raticate = {
+    nivel: 50,
+    nombre: "Raticate",
+    tipo: normal,
+    tipo2: normal,
+    ata1: hiperC,
+    ata2: trit,
+    ata3: superd,
+    ata4: esfuerzo,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 81,
+    dff: 60,
+    ats: 50,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var fearow = {
+    nivel: 50,
+    nombre: "Fearow",
+    tipo: normal,
+    tipo2: volador,
+    ata1: ataqueRap,
+    ata2: perse,
+    ata3: golpeA,
+    ata4: picoT,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 90,
+    dff: 65,
+    ats: 61,
+    dfs: 61,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var arbok = {
+    nivel: 50,
+    nombre: "Arbok",
+    tipo: veneno,
+    tipo2: veneno,
+    ata1: trit,
+    ata2: acido,
+    ata3: colmH,
+    ata4: avala,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 95,
+    dff: 69,
+    ats: 65,
+    dfs: 79,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var pikachu = {
+    nivel: 50,
+    nombre: "Pikachu",
+    tipo: electrico,
+    tipo2: electrico,
+    ata1: rapidez,
+    ata2: placajeE,
+    ata3: rayo,
+    ata4: trueno,
+    estado: "normal",
+    estado2: [],
+    ps: 45,
+    atf: 80,
+    dff: 50,
+    ats: 75,
+    dfs: 60,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var raichu = {
+    nivel: 50,
+    nombre: "Raichu",
+    tipo: electrico,
+    tipo2: electrico,
+    ata1: ataqueRap,
+    ata2: rayo,
+    ata3: puñoT,
+    ata4: trueno,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 90,
+    dff: 55,
+    ats: 90,
+    dfs: 80,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var sandslash = {
+    nivel: 50,
+    nombre: "Sandslash",
+    tipo: tierra,
+    tipo2: tierra,
+    ata1: bucleA,
+    ata2: cuch,
+    ata3: excavar,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 100,
+    dff: 110,
+    ats: 45,
+    dfs: 55,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var nidoqueen = {
+    nivel: 50,
+    nombre: "Nidoqueen",
+    tipo: veneno,
+    tipo2: tierra,
+    ata1: golpeC,
+    ata2: dobleP,
+    ata3: trit,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 82,
+    dff: 87,
+    ats: 75,
+    dfs: 85,
+    eps: 3,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var nidoking = {
+    nivel: 50,
+    nombre: "Nidoking",
+    tipo: veneno,
+    tipo2: tierra,
+    ata1: golpe,
+    ata2: dobleP,
+    ata3: megac,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 81,
+    atf: 92,
+    dff: 77,
+    ats: 85,
+    dfs: 75,
+    eps: 0,
+    eaf: 3,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var clefable = {
+    nivel: 50,
+    nombre: "Clefable",
+    tipo: hada,
+    tipo2: hada,
+    ata1: dobleB,
+    ata2: metron,
+    ata3: luzL,
+    ata4: puñoM,
+    estado: "normal",
+    estado2: [],
+    ps: 95,
+    atf: 70,
+    dff: 73,
+    ats: 85,
+    dfs: 90,
+    eps: 3,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var ninetales = {
+    nivel: 50,
+    nombre: "Ninetales",
+    tipo: fuego,
+    tipo2: fuego,
+    ata1: ataqueRap,
+    ata2: fuegoF,
+    ata3: lanz,
+    ata4: giroF,
+    estado: "normal",
+    estado2: [],
+    ps: 73,
+    atf: 76,
+    dff: 75,
+    ats: 81,
+    dfs: 100,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 1
+}
+var wigglytuff = {
+    nivel: 50,
+    nombre: "Wigglytuff",
+    tipo: normal,
+    tipo2: hada,
+    ata1: dobleB,
+    ata2: golpeC,
+    ata3: vozarron,
+    ata4: dobleF,
+    estado: "normal",
+    estado2: [],
+    ps: 140,
+    atf: 70,
+    dff: 45,
+    ats: 75,
+    dfs: 50,
+    eps: 3,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var vileplume = {
+    nivel: 50,
+    nombre: "Vileplume",
+    tipo: planta,
+    tipo2: veneno,
+    ata1: polvoV,
+    ata2: paraliz,
+    ata3: somn,
+    ata4: rayoS,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 80,
+    dff: 85,
+    ats: 100,
+    dfs: 90,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 3,
+    eds: 0
+}
+var parasect = {
+    nivel: 50,
+    nombre: "Parasect",
+    tipo: bicho,
+    tipo2: planta,
+    ata1: espora,
+    ata2: cuch,
+    ata3: gigad,
+    ata4: aromaterapia,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 95,
+    dff: 80,
+    ats: 60,
+    dfs: 80,
+    eps: 0,
+    eaf: 2,
+    edf: 1,
+    eas: 0,
+    eds: 0
+}
+var venomoth = {
+    nivel: 50,
+    nombre: "Venomoth",
+    tipo: bicho,
+    tipo2: veneno,
+    ata1: chupavidas,
+    ata2: psicorrayo,
+    ata3: somn,
+    ata4: psiquic,
+    estado: "normal",
+    estado2: [],
+    ps: 70,
+    atf: 65,
+    dff: 60,
+    ats: 90,
+    dfs: 75,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 1,
+    eds: 0
+}
+var dugtrio = {
+    nivel: 50,
+    nombre: "Dugtrio",
+    tipo: tierra,
+    tipo2: tierra,
+    ata1: ataqueArena,
+    ata2: excavar,
+    ata3: cuch,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 35,
+    atf: 100,
+    dff: 50,
+    ats: 50,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var persian = {
+    nivel: 50,
+    nombre: "Persian",
+    tipo: normal,
+    tipo2: normal,
+    ata1: rapidez,
+    ata2: finta,
+    ata3: golpesF,
+    ata4: cuch,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 70,
+    dff: 60,
+    ats: 65,
+    dfs: 65,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var golduck = {
+    nivel: 50,
+    nombre: "Golduck",
+    tipo: agua,
+    tipo2: agua,
+    ata1: confusion,
+    ata2: hidrop,
+    ata3: golpesF,
+    ata4: amnesia,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 82,
+    dff: 78,
+    ats: 95,
+    dfs: 80,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var primeape = {
+    nivel: 50,
+    nombre: "Primeape",
+    tipo: lucha,
+    tipo2: lucha,
+    ata1: movS,
+    ata2: tajoC,
+    ata3: chirrido,
+    ata4: golpe,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 105,
+    dff: 60,
+    ats: 60,
+    dfs: 70,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var arcanine = {
+    nivel: 50,
+    nombre: "Arcanine",
+    tipo: fuego,
+    tipo2: fuego,
+    ata1: colmilloI,
+    ata2: derribo,
+    ata3: ruedaF,
+    ata4: velX,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 110,
+    dff: 80,
+    ats: 100,
+    dfs: 80,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var poliwrath = {
+    nivel: 50,
+    nombre: "Poliwrath",
+    tipo: agua,
+    tipo2: lucha,
+    ata1: hipnosis,
+    ata2: pistolaA,
+    ata3: sumision,
+    ata4: puñoD,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 85,
+    dff: 95,
+    ats: 70,
+    dfs: 90,
+    eps: 0,
+    eaf: 0,
+    edf: 3,
+    eas: 0,
+    eds: 0
+}
+var alakazam = {
+    nivel: 50,
+    nombre: "Alakazam",
+    tipo: psiquico,
+    tipo2: psiquico,
+    ata1: kinetico,
+    ata2: recuperacion,
+    ata3: psiquic,
+    ata4: reflejo,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 50,
+    dff: 45,
+    ats: 135,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 3,
+    eds: 0
+}
+var machamp = {
+    nivel: 50,
+    nombre: "Machamp",
+    tipo: lucha,
+    tipo2: lucha,
+    ata1: tiroV,
+    ata2: fuerza,
+    ata3: sumision,
+    ata4: tajoC,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 130,
+    dff: 80,
+    ats: 65,
+    dfs: 85,
+    eps: 0,
+    eaf: 3,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var victreebel = {
+    nivel: 50,
+    nombre: "Victreebel",
+    tipo: planta,
+    tipo2: veneno,
+    ata1: constriccion,
+    ata2: polvoV,
+    ata3: somn,
+    ata4: hojaAg,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 105,
+    dff: 65,
+    ats: 100,
+    dfs: 60,
+    eps: 0,
+    eaf: 3,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var tentacruel = {
+    nivel: 50,
+    nombre: "Tentacruel",
+    tipo: agua,
+    tipo2: veneno,
+    ata1: constriccion,
+    ata2: puyaN,
+    ata3: chirrido,
+    ata4: hidrob,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 70,
+    dff: 65,
+    ats: 80,
+    dfs: 120,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var golem = {
+    nivel: 50,
+    nombre: "Golem",
+    tipo: roca,
+    tipo2: tierra,
+    ata1: desenrollar,
+    ata2: pedrada,
+    ata3: terr,
+    ata4: explosion,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 110,
+    dff: 130,
+    ats: 55,
+    dfs: 65,
+    eps: 0,
+    eaf: 0,
+    edf: 3,
+    eas: 0,
+    eds: 0
+}
+var rapidash = {
+    nivel: 50,
+    nombre: "Rapidash",
+    tipo: fuego,
+    tipo2: fuego,
+    ata1: giroF,
+    ata2: derribo,
+    ata3: ataqueF,
+    ata4: bote,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 100,
+    dff: 70,
+    ats: 80,
+    dfs: 80,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var magneton = {
+    nivel: 50,
+    nombre: "Magneton",
+    tipo: electrico,
+    tipo2: acero,
+    ata1: chispa,
+    ata2: rapidez,
+    ata3: fijarB,
+    ata4: electrocañon,
+    estado: "normal",
+    estado2: [],
+    ps: 50,
+    atf: 60,
+    dff: 95,
+    ats: 120,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var farfetchd = {
+    nivel: 50,
+    nombre: "Farfetch'd",
+    tipo: normal,
+    tipo2: volador,
+    ata1: golpeA,
+    ata2: danzaE,
+    ata3: cuch,
+    ata4: falsot,
+    estado: "normal",
+    estado2: [],
+    ps: 52,
+    atf: 65,
+    dff: 55,
+    ats: 58,
+    dfs: 62,
+    eps: 0,
+    eaf: 1,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var dodrio = {
+    nivel: 50,
+    nombre: "Dodrio",
+    tipo: normal,
+    tipo2: volador,
+    ata1: furia,
+    ata2: alboroto,
+    ata3: tria,
+    ata4: picoT,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 110,
+    dff: 70,
+    ats: 60,
+    dfs: 60,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var dewgong = {
+    nivel: 50,
+    nombre: "Dewgong",
+    tipo: agua,
+    tipo2: hielo,
+    ata1: rayoAu,
+    ata2: frioP,
+    ata3: descanso,
+    ata4: derribo,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 70,
+    dff: 80,
+    ats: 70,
+    dfs: 95,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var muk = {
+    nivel: 50,
+    nombre: "Muk",
+    tipo: veneno,
+    tipo2: veneno,
+    ata1: chirrido,
+    ata2: residuos,
+    ata3: armaduraA,
+    ata4: bombL,
+    estado: "normal",
+    estado2: [],
+    ps: 105,
+    atf: 105,
+    dff: 75,
+    ats: 65,
+    dfs: 100,
+    eps: 1,
+    eaf: 1,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var cloyster = {
+    nivel: 50,
+    nombre: "Cloyster",
+    tipo: agua,
+    tipo2: hielo,
+    ata1: refugio,
+    ata2: tenaza,
+    ata3: rayoAu,
+    ata4: clavoC,
+    estado: "normal",
+    estado2: [],
+    ps: 50,
+    atf: 95,
+    dff: 180,
+    ats: 85,
+    dfs: 45,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var gengar = {
+    nivel: 50,
+    nombre: "Gengar",
+    tipo: fantasma,
+    tipo2: veneno,
+    ata1: hipnosis,
+    ata2: puñoS,
+    ata3: bolaS,
+    ata4: comeSu,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 65,
+    dff: 60,
+    ats: 130,
+    dfs: 75,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 3,
+    eds: 0
+}
+var onix = {
+    nivel: 50,
+    nombre: "Onix",
+    tipo: roca,
+    tipo2: tierra,
+    ata1: atizar,
+    ata2: fortaleza,
+    ata3: colaF,
+    ata4: bucleA,
+    estado: "normal",
+    estado2: [],
+    ps: 35,
+    atf: 45,
+    dff: 160,
+    ats: 30,
+    dfs: 45,
+    eps: 0,
+    eaf: 0,
+    edf: 1,
+    eas: 0,
+    eds: 0
+}
+var hypno = {
+    nivel: 50,
+    nombre: "Hypno",
+    tipo: psiquico,
+    tipo2: psiquico,
+    ata1: hipnosis,
+    ata2: golpeCa,
+    ata3: psiquic,
+    ata4: meditacion,
+    estado: "normal",
+    estado2: [],
+    ps: 85,
+    atf: 73,
+    dff: 70,
+    ats: 73,
+    dfs: 115,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var kingler = {
+    nivel: 50,
+    nombre: "Kingler",
+    tipo: agua,
+    tipo2: agua,
+    ata1: pisoton,
+    ata2: proteccion,
+    ata3: guillotina,
+    ata4: martillazo,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 130,
+    dff: 115,
+    ats: 50,
+    dfs: 50,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var electrode = {
+    nivel: 50,
+    nombre: "Electrode",
+    tipo: electrico,
+    tipo2: electrico,
+    ata1: desenrollar,
+    ata2: rayo,
+    ata3: rapidez,
+    ata4: explosion,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 50,
+    dff: 70,
+    ats: 80,
+    dfs: 80,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var exeggutor = {
+    nivel: 50,
+    nombre: "Exeggutor",
+    tipo: planta,
+    tipo2: psiquico,
+    ata1: hipnosis,
+    ata2: confusion,
+    ata3: pisoton,
+    ata4: bombaH,
+    estado: "normal",
+    estado2: [],
+    ps: 95,
+    atf: 95,
+    dff: 85,
+    ats: 125,
+    dfs: 65,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var marowak = {
+    nivel: 50,
+    nombre: "Marowak",
+    tipo: tierra,
+    tipo2: tierra,
+    ata1: huesoP,
+    ata2: golpe,
+    ata3: huesomerang,
+    ata4: ataqueO,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 80,
+    dff: 110,
+    ats: 50,
+    dfs: 80,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var hitmonlee = {
+    nivel: 50,
+    nombre: "Hitmonlee",
+    tipo: lucha,
+    tipo2: lucha,
+    ata1: patadaS,
+    ata2: patadaSA,
+    ata3: aguante,
+    ata4: megapatada,
+    estado: "normal",
+    estado2: [],
+    ps: 50,
+    atf: 120,
+    dff: 53,
+    ats: 35,
+    dfs: 110,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var hitmonchan = {
+    nivel: 50,
+    nombre: "Hitmonchan",
+    tipo: lucha,
+    tipo2: lucha,
+    ata1: puñoT,
+    ata2: puñoH,
+    ata3: puñoF,
+    ata4: megapuño,
+    estado: "normal",
+    estado2: [],
+    ps: 50,
+    atf: 105,
+    dff: 79,
+    ats: 35,
+    dfs: 110,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var lickitung = {
+    nivel: 50,
+    nombre: "Lickitung",
+    tipo: normal,
+    tipo2: normal,
+    ata1: pisoton,
+    ata2: constriccion,
+    ata3: atizar,
+    ata4: chirrido,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 55,
+    dff: 75,
+    ats: 60,
+    dfs: 75,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var weezing = {
+    nivel: 50,
+    nombre: "Weezing",
+    tipo: veneno,
+    tipo2: veneno,
+    ata1: polucion,
+    ata2: residuos,
+    ata3: pantallaH,
+    ata4: explosion,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 90,
+    dff: 120,
+    ats: 85,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var rhydon = {
+    nivel: 50,
+    nombre: "Rhydon",
+    tipo: tierra,
+    tipo2: roca,
+    ata1: ataqueF,
+    ata2: pedrada,
+    ata3: perforador,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 105,
+    atf: 130,
+    dff: 120,
+    ats: 45,
+    dfs: 45,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var tangela = {
+    nivel: 50,
+    nombre: "Tangela",
+    tipo: planta,
+    tipo2: planta,
+    ata1: megaa,
+    ata2: paraliz,
+    ata3: somn,
+    ata4: atizar,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 55,
+    dff: 115,
+    ats: 100,
+    dfs: 40,
+    eps: 0,
+    eaf: 0,
+    edf: 1,
+    eas: 0,
+    eds: 0
+}
+var kangaskhan = {
+    nivel: 50,
+    nombre: "Kangaskhan",
+    tipo: normal,
+    tipo2: normal,
+    ata1: puñoCo,
+    ata2: megapuño,
+    ata3: puñoMa,
+    ata4: inversion,
+    estado: "normal",
+    estado2: [],
+    ps: 105,
+    atf: 95,
+    dff: 80,
+    ats: 40,
+    dfs: 80,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var seaking = {
+    nivel: 50,
+    nombre: "Seaking",
+    tipo: agua,
+    tipo2: agua,
+    ata1: cornada,
+    ata2: ataqueF,
+    ata3: cascada,
+    ata4: perforador,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 92,
+    dff: 65,
+    ats: 65,
+    dfs: 80,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var starmie = {
+    nivel: 50,
+    nombre: "Starmie",
+    tipo: agua,
+    tipo2: psiquico,
+    ata1: rapidez,
+    ata2: recuperacion,
+    ata3: rayoBu,
+    ata4: hidrob,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 75,
+    dff: 85,
+    ats: 100,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var mrmime = {
+    nivel: 50,
+    nombre: "Mr. Mime",
+    tipo: psiquico,
+    tipo2: hada,
+    ata1: reflejo,
+    ata2: dobleB,
+    ata3: psicorrayo,
+    ata4: psiquic,
+    estado: "normal",
+    estado2: [],
+    ps: 40,
+    atf: 45,
+    dff: 65,
+    ats: 100,
+    dfs: 120,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var jynx = {
+    nivel: 50,
+    nombre: "Jynx",
+    tipo: hielo,
+    tipo2: psiquico,
+    ata1: besoA,
+    ata2: dobleB,
+    ata3: puñoH,
+    ata4: golpeC,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 50,
+    dff: 35,
+    ats: 115,
+    dfs: 95,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var electabuzz = {
+    nivel: 50,
+    nombre: "Electabuzz",
+    tipo: electrico,
+    tipo2: electrico,
+    ata1: chirrido,
+    ata2: puñoT,
+    ata3: rayo,
+    ata4: pantallaLuz,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 83,
+    dff: 57,
+    ats: 95,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var magmar = {
+    nivel: 50,
+    nombre: "Magmar",
+    tipo: fuego,
+    tipo2: fuego,
+    ata1: puñoF,
+    ata2: pantallaH,
+    ata3: lanz,
+    ata4: rayoCo,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 95,
+    dff: 57,
+    ats: 100,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var pinsir = {
+    nivel: 50,
+    nombre: "Pinsir",
+    tipo: bicho,
+    tipo2: bicho,
+    ata1: guillotina,
+    ata2: sumision,
+    ata3: fortaleza,
+    ata4: cuch,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 125,
+    dff: 100,
+    ats: 55,
+    dfs: 70,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var tauros = {
+    nivel: 50,
+    nombre: "Tauros",
+    tipo: normal,
+    tipo2: normal,
+    ata1: cornada,
+    ata2: descanso,
+    ata3: golpe,
+    ata4: derribo,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 100,
+    dff: 95,
+    ats: 40,
+    dfs: 70,
+    eps: 0,
+    eaf: 1,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var gyarados = {
+    nivel: 50,
+    nombre: "Gyarados",
+    tipo: agua,
+    tipo2: volador,
+    ata1: furiaDr,
+    ata2: ciclon,
+    ata3: hidrob,
+    ata4: hiperrayo,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 100,
+    dff: 95,
+    ats: 40,
+    dfs: 70,
+    eps: 0,
+    eaf: 1,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var lapras = {
+    nivel: 50,
+    nombre: "Lapras",
+    tipo: agua,
+    tipo2: hielo,
+    ata1: rayoCo,
+    ata2: rayoH,
+    ata3: veloS,
+    ata4: hidrob,
+    estado: "normal",
+    estado2: [],
+    ps: 130,
+    atf: 85,
+    dff: 80,
+    ats: 85,
+    dfs: 95,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var ditto = {
+    nivel: 50,
+    nombre: "Ditto",
+    tipo: normal,
+    tipo2: normal,
+    ata1: transformacion,
+    ata2: transformacion,
+    ata3: transformacion,
+    ata4: transformacion,
+    estado: "normal",
+    estado2: [],
+    ps: 48,
+    atf: 48,
+    dff: 48,
+    ats: 48,
+    dfs: 48,
+    eps: 1,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var vaporeon = {
+    nivel: 50,
+    nombre: "Vaporeon",
+    tipo: agua,
+    tipo2: agua,
+    ata1: ataqueRap,
+    ata2: pistolaA,
+    ata3: mord,
+    ata4: rayoAu,
+    estado: "normal",
+    estado2: [],
+    ps: 130,
+    atf: 65,
+    dff: 60,
+    ats: 110,
+    dfs: 95,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var jolteon = {
+    nivel: 50,
+    nombre: "Jolteon",
+    tipo: electrico,
+    tipo2: electrico,
+    ata1: ataqueRap,
+    ata2: impact,
+    ata3: ondaT,
+    ata4: pinM,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 65,
+    dff: 60,
+    ats: 110,
+    dfs: 95,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var flareon = {
+    nivel: 50,
+    nombre: "Flareon",
+    tipo: fuego,
+    tipo2: fuego,
+    ata1: ataqueRap,
+    ata2: ascuas,
+    ata3: giroF,
+    ata4: polucion,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 130,
+    dff: 60,
+    ats: 95,
+    dfs: 110,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var omastar = {
+    nivel: 50,
+    nombre: "Omastar",
+    tipo: roca,
+    tipo2: agua,
+    ata1: cornada,
+    ata2: proteccion,
+    ata3: clavoC,
+    ata4: hidrob,
+    estado: "normal",
+    estado2: [],
+    ps: 70,
+    atf: 60,
+    dff: 125,
+    ats: 115,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var kabutops = {
+    nivel: 50,
+    nombre: "Kabutops",
+    tipo: roca,
+    tipo2: agua,
+    ata1: disparoL,
+    ata2: ataqueArena,
+    ata3: aguante,
+    ata4: cuch,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 115,
+    dff: 105,
+    ats: 65,
+    dfs: 70,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var aerodactyl = {
+    nivel: 50,
+    nombre: "Aerodactyl",
+    tipo: roca,
+    tipo2: volador,
+    ata1: poderP,
+    ata2: mord,
+    ata3: derribo,
+    ata4: hiperrayo,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 105,
+    dff: 65,
+    ats: 60,
+    dfs: 75,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var snorlax = {
+    nivel: 50,
+    nombre: "Snorlax",
+    tipo: normal,
+    tipo2: normal,
+    ata1: descanso,
+    ata2: golpeC,
+    ata3: desenrollar,
+    ata4: dobleF,
+    estado: "normal",
+    estado2: [],
+    ps: 160,
+    atf: 110,
+    dff: 65,
+    ats: 65,
+    dfs: 110,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var dragonite = {
+    nivel: 50,
+    nombre: "Dragonite",
+    tipo: dragon,
+    tipo2: volador,
+    ata1: ciclon,
+    ata2: atizar,
+    ata3: furiaDr,
+    ata4: veloS,
+    estado: "normal",
+    estado2: [],
+    ps: 91,
+    atf: 134,
+    dff: 95,
+    ats: 100,
+    dfs: 100,
+    eps: 0,
+    eaf: 3,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var meganium = {
+    nivel: 50,
+    nombre: "Meganium",
+    tipo: planta,
+    tipo2: planta,
+    ata1: hojaAf,
+    ata2: polvoV,
+    ata3: golpeC,
+    ata4: pantallaLuz,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 82,
+    dff: 100,
+    ats: 83,
+    dfs: 100,
+    eps: 0,
+    eaf: 0,
+    edf: 1,
+    eas: 0,
+    eds: 2
+}
+var typhlosion = {
+    nivel: 50,
+    nombre: "Typhlosion",
+    tipo: fuego,
+    tipo2: fuego,
+    ata1: ataqueRap,
+    ata2: ruedaF,
+    ata3: rapidez,
+    ata4: lanz,
+    estado: "normal",
+    estado2: [],
+    ps: 78,
+    atf: 84,
+    dff: 78,
+    ats: 109,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 3,
+    eds: 0
+}
+var feraligatr = {
+    nivel: 50,
+    nombre: "Feraligatr",
+    tipo: agua,
+    tipo2: agua,
+    ata1: pistolaA,
+    ata2: mord,
+    ata3: cuch,
+    ata4: chirrido,
+    estado: "normal",
+    estado2: [],
+    ps: 85,
+    atf: 105,
+    dff: 100,
+    ats: 79,
+    dfs: 83,
+    eps: 0,
+    eaf: 2,
+    edf: 1,
+    eas: 0,
+    eds: 0
+}
+var furret = {
+    nivel: 50,
+    nombre: "Furret",
+    tipo: normal,
+    tipo2: normal,
+    ata1: golpesF,
+    ata2: atizar,
+    ata3: descanso,
+    ata4: amnesia,
+    estado: "normal",
+    estado2: [],
+    ps: 85,
+    atf: 76,
+    dff: 64,
+    ats: 45,
+    dfs: 55,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var noctowl = {
+    nivel: 50,
+    nombre: "Noctowl",
+    tipo: normal,
+    tipo2: volador,
+    ata1: hipnosis,
+    ata2: reflejo,
+    ata3: derribo,
+    ata4: confusion,
+    estado: "normal",
+    estado2: [],
+    ps: 100,
+    atf: 50,
+    dff: 50,
+    ats: 76,
+    dfs: 96,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var ledian = {
+    nivel: 50,
+    nombre: "Ledian",
+    tipo: bicho,
+    tipo2: volador,
+    ata1: pantallaLuz,
+    ata2: reflejo,
+    ata3: veloS,
+    ata4: rapidez,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 35,
+    dff: 50,
+    ats: 55,
+    dfs: 110,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var ariados = {
+    nivel: 50,
+    nombre: "Ariados",
+    tipo: bicho,
+    tipo2: veneno,
+    ata1: restriccion,
+    ata2: chupavidas,
+    ata3: golpesF,
+    ata4: telaraña,
+    estado: "normal",
+    estado2: [],
+    ps: 70,
+    atf: 90,
+    dff: 70,
+    ats: 60,
+    dfs: 60,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var crobat = {
+    nivel: 50,
+    nombre: "Crobat",
+    tipo: veneno,
+    tipo2: volador,
+    ata1: ataqueAla,
+    ata2: rayoCo,
+    ata3: aireAf,
+    ata4: maldeojo,
+    estado: "normal",
+    estado2: [],
+    ps: 100,
+    atf: 50,
+    dff: 50,
+    ats: 76,
+    dfs: 96,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var lanturn = {
+    nivel: 50,
+    nombre: "Lanturn",
+    tipo: agua,
+    tipo2: electrico,
+    ata1: chispa,
+    ata2: rayoCo,
+    ata3: derribo,
+    ata4: hidrob,
+    estado: "normal",
+    estado2: [],
+    ps: 125,
+    atf: 58,
+    dff: 58,
+    ats: 76,
+    dfs: 76,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var togetic = {
+    nivel: 50,
+    nombre: "Togetic",
+    tipo: hada,
+    tipo2: volador,
+    ata1: metron,
+    ata2: besoD,
+    ata3: veloS,
+    ata4: dobleF,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 40,
+    dff: 85,
+    ats: 80,
+    dfs: 105,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var xatu = {
+    nivel: 50,
+    nombre: "Xatu",
+    tipo: psiquico,
+    tipo2: volador,
+    ata1: tinieblas,
+    ata2: deseo,
+    ata3: premonicion,
+    ata4: rayoCo,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 75,
+    dff: 70,
+    ats: 95,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 1,
+    eds: 0
+}
+var ampharos = {
+    nivel: 50,
+    nombre: "Ampharos",
+    tipo: electrico,
+    tipo2: electrico,
+    ata1: impact,
+    ata2: ondaT,
+    ata3: puñoT,
+    ata4: pantallaLuz,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 75,
+    dff: 75,
+    ats: 115,
+    dfs: 90,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 3,
+    eds: 0
+}
+var bellossom = {
+    nivel: 50,
+    nombre: "Bellossom",
+    tipo: planta,
+    tipo2: planta,
+    ata1: dulceA,
+    ata2: paraliz,
+    ata3: hojaMa,
+    ata4: danzaP,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 80,
+    dff: 85,
+    ats: 90,
+    dfs: 100,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 3
+}
+var azumarill = {
+    nivel: 50,
+    nombre: "Azumarill",
+    tipo: agua,
+    tipo2: hada,
+    ata1: pistolaA,
+    ata2: desenrollar,
+    ata3: rayoBu,
+    ata4: dobleF,
+    estado: "normal",
+    estado2: [],
+    ps: 100,
+    atf: 50,
+    dff: 80,
+    ats: 50,
+    dfs: 80,
+    eps: 3,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var sudowoodo = {
+    nivel: 50,
+    nombre: "Sudowoodo",
+    tipo: roca,
+    tipo2: roca,
+    ata1: patadaBa,
+    ata2: avala,
+    ata3: finta,
+    ata4: atizar,
+    estado: "normal",
+    estado2: [],
+    ps: 70,
+    atf: 100,
+    dff: 115,
+    ats: 30,
+    dfs: 65,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var politoed = {
+    nivel: 50,
+    nombre: "Politoed",
+    tipo: agua,
+    tipo2: agua,
+    ata1: hipnosis,
+    ata2: pistolaA,
+    ata3: cantoM,
+    ata4: contoneo,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 75,
+    dff: 75,
+    ats: 90,
+    dfs: 100,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 3
+}
+var jumpluff = {
+    nivel: 50,
+    nombre: "Jumpluff",
+    tipo: planta,
+    tipo2: volador,
+    ata1: paraliz,
+    ata2: somn,
+    ata3: drenadoras,
+    ata4: megaa,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 55,
+    dff: 70,
+    ats: 55,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 3
+}
+var aipom = {
+    nivel: 50,
+    nombre: "Aipom",
+    tipo: normal,
+    tipo2: normal,
+    ata1: golpesF,
+    ata2: cosquillas,
+    ata3: rapidez,
+    ata4: chirrido,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 70,
+    dff: 55,
+    ats: 40,
+    dfs: 55,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var sunflora = {
+    nivel: 50,
+    nombre: "Sunflora",
+    tipo: planta,
+    tipo2: planta,
+    ata1: hojaAf,
+    ata2: recurrente,
+    ata3: danzaP,
+    ata4: rayoS,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 75,
+    dff: 55,
+    ats: 105,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var yanma = {
+    nivel: 50,
+    nombre: "Yanma",
+    tipo: bicho,
+    tipo2: volador,
+    ata1: deteccion,
+    ata2: supers,
+    ata3: rapidez,
+    ata4: chirrido,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 65,
+    dff: 45,
+    ats: 75,
+    dfs: 45,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var quagsire = {
+    nivel: 50,
+    nombre: "Quagsire",
+    tipo: agua,
+    tipo2: tierra,
+    ata1: disparoL,
+    ata2: amnesia,
+    ata3: bostezo,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 95,
+    atf: 85,
+    dff: 85,
+    ats: 65,
+    dfs: 65,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var espeon = {
+    nivel: 50,
+    nombre: "Espeon",
+    tipo: psiquico,
+    tipo2: psiquico,
+    ata1: ataqueRap,
+    ata2: rapidez,
+    ata3: psicorrayo,
+    ata4: psiquic,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 65,
+    dff: 60,
+    ats: 130,
+    dfs: 95,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var umbreon = {
+    nivel: 50,
+    nombre: "Umbreon",
+    tipo: siniestro,
+    tipo2: siniestro,
+    ata1: ataqueRap,
+    ata2: finta,
+    ata3: maldeojo,
+    ata4: chirrido,
+    estado: "normal",
+    estado2: [],
+    ps: 95,
+    atf: 65,
+    dff: 110,
+    ats: 60,
+    dfs: 130,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var murkrow = {
+    nivel: 50,
+    nombre: "Murkrow",
+    tipo: siniestro,
+    tipo2: volador,
+    ata1: perse,
+    ata2: tinieblas,
+    ata3: finta,
+    ata4: maldeojo,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 85,
+    dff: 42,
+    ats: 85,
+    dfs: 42,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var slowking = {
+    nivel: 50,
+    nombre: "Slowking",
+    tipo: agua,
+    tipo2: psiquico,
+    ata1: confusion,
+    ata2: golpeCa,
+    ata3: contoneo,
+    ata4: psiquic,
+    estado: "normal",
+    estado2: [],
+    ps: 95,
+    atf: 75,
+    dff: 80,
+    ats: 100,
+    dfs: 110,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 3
+}
+var misdreavus = {
+    nivel: 50,
+    nombre: "Misdreavus",
+    tipo: fantasma,
+    tipo2: fantasma,
+    ata1: rayoCo,
+    ata2: psicorrayo,
+    ata3: divideD,
+    ata4: cantoM,
+    estado: "normal",
+    estado2: [],
+    ps: 60,
+    atf: 60,
+    dff: 60,
+    ats: 85,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 1,
+    eds: 1
+}
+var unown = {
+    nivel: 50,
+    nombre: "Unown",
+    tipo: psiquico,
+    tipo2: psiquico,
+    ata1: poderOc,
+    ata2: poderOc,
+    ata3: poderOc,
+    ata4: poderOc,
+    estado: "normal",
+    estado2: [],
+    ps: 48,
+    atf: 72,
+    dff: 48,
+    ats: 72,
+    dfs: 48,
+    eps: 0,
+    eaf: 1,
+    edf: 0,
+    eas: 1,
+    eds: 0
+}
+var wobbuffet = {
+    nivel: 50,
+    nombre: "Wobbuffet",
+    tipo: psiquico,
+    tipo2: psiquico,
+    ata1: contraA,
+    ata2: mantoE,
+    ata3: veloS,
+    ata4: mismoD,
+    estado: "normal",
+    estado2: [],
+    ps: 190,
+    atf: 33,
+    dff: 58,
+    ats: 33,
+    dfs: 58,
+    eps: 2,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var girafarig = {
+    nivel: 50,
+    nombre: "Girafarig",
+    tipo: normal,
+    tipo2: psiquico,
+    ata1: confusion,
+    ata2: pisoton,
+    ata3: psicorrayo,
+    ata4: trit,
+    estado: "normal",
+    estado2: [],
+    ps: 70,
+    atf: 80,
+    dff: 65,
+    ats: 90,
+    dfs: 65,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var forretress = {
+    nivel: 50,
+    nombre: "Forretress",
+    tipo: bicho,
+    tipo2: acero,
+    ata1: derribo,
+    ata2: giroRap,
+    ata3: venganza,
+    ata4: explosion,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 90,
+    dff: 140,
+    ats: 60,
+    dfs: 60,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var dunsparce = {
+    nivel: 50,
+    nombre: "Dunsparce",
+    tipo: normal,
+    tipo2: normal,
+    ata1: deslumbrar,
+    ata2: perse,
+    ata3: chirrido,
+    ata4: derribo,
+    estado: "normal",
+    estado2: [],
+    ps: 100,
+    atf: 70,
+    dff: 70,
+    ats: 65,
+    dfs: 65,
+    eps: 1,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var gligar = {
+    nivel: 50,
+    nombre: "Gligar",
+    tipo: tierra,
+    tipo2: volador,
+    ata1: finta,
+    ata2: cuch,
+    ata3: chirrido,
+    ata4: guillotina,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 75,
+    dff: 105,
+    ats: 35,
+    dfs: 65,
+    eps: 0,
+    eaf: 0,
+    edf: 1,
+    eas: 0,
+    eds: 0
+}
+var steelix = {
+    nivel: 50,
+    nombre: "Steelix",
+    tipo: acero,
+    tipo2: tierra,
+    ata1: furia, //tormentaA
+    ata2: atizar,
+    ata3: colaF,
+    ata4: trit,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 85,
+    dff: 200,
+    ats: 55,
+    dfs: 65,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var granbull = {
+    nivel: 50,
+    nombre: "Granbull",
+    tipo: hada,
+    tipo2: hada,
+    ata1: mord,
+    ata2: lengue,
+    ata3: furia,
+    ata4: derribo,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 120,
+    dff: 75,
+    ats: 60,
+    dfs: 60,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var qwilfish = {
+    nivel: 50,
+    nombre: "Qwilfish",
+    tipo: agua,
+    tipo2: veneno,
+    ata1: pistolaA,
+    ata2: pinM,
+    ata3: derribo,
+    ata4: hidrob,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 95,
+    dff: 75,
+    ats: 55,
+    dfs: 55,
+    eps: 0,
+    eaf: 1,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var scizor = {
+    nivel: 50,
+    nombre: "Scizor",
+    tipo: bicho,
+    tipo2: acero,
+    ata1: garraM,
+    ata2: cuch,
+    ata3: danzaE,
+    ata4: corteF,
+    estado: "normal",
+    estado2: [],
+    ps: 70,
+    atf: 130,
+    dff: 100,
+    ats: 55,
+    dfs: 80,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var shuckle = {
+    nivel: 50,
+    nombre: "Shuckle",
+    tipo: bicho,
+    tipo2: roca,
+    ata1: constriccion,
+    ata2: veloS,
+    ata3: venganza,
+    ata4: descanso,
+    estado: "normal",
+    estado2: [],
+    ps: 20,
+    atf: 10,
+    dff: 230,
+    ats: 10,
+    dfs: 230,
+    eps: 0,
+    eaf: 0,
+    edf: 1,
+    eas: 0,
+    eds: 1
+}
+var heracross = {
+    nivel: 50,
+    nombre: "Heracross",
+    tipo: bicho,
+    tipo2: lucha,
+    ata1: contraA,
+    ata2: derribo,
+    ata3: inversion,
+    ata4: megac,
+    estado: "normal",
+    estado2: [],
+    ps: 80,
+    atf: 125,
+    dff: 75,
+    ats: 40,
+    dfs: 95,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var sneasel = {
+    nivel: 50,
+    nombre: "Sneasel",
+    tipo: siniestro,
+    tipo2: hielo,
+    ata1: chirrido,
+    ata2: finta,
+    ata3: golpesF,
+    ata4: cuch,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 95,
+    dff: 55,
+    ats: 35,
+    dfs: 75,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var ursaring = {
+    nivel: 50,
+    nombre: "Ursaring",
+    tipo: normal,
+    tipo2: normal,
+    ata1: finta,
+    ata2: descanso,
+    ata3: cuch,
+    ata4: ronquido,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 130,
+    dff: 75,
+    ats: 75,
+    dfs: 75,
+    eps: 0,
+    eaf: 2,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var magcargo = {
+    nivel: 50,
+    nombre: "Magcargo",
+    tipo: fuego,
+    tipo2: roca,
+    ata1: fortaleza,
+    ata2: amnesia,
+    ata3: lanz,
+    ata4: avala,
+    estado: "normal",
+    estado2: [],
+    ps: 50,
+    atf: 50,
+    dff: 120,
+    ats: 80,
+    dfs: 80,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var piloswine = {
+    nivel: 50,
+    nombre: "Piloswine",
+    tipo: hielo,
+    tipo2: tierra,
+    ata1: nieveP,
+    ata2: aguante,
+    ata3: derribo,
+    ata4: ataqueF,
+    estado: "normal",
+    estado2: [],
+    ps: 100,
+    atf: 100,
+    dff: 80,
+    ats: 60,
+    dfs: 60,
+    eps: 1,
+    eaf: 1,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var corsola = {
+    nivel: 50,
+    nombre: "Corsola",
+    tipo: agua,
+    tipo2: roca,
+    ata1: rayoBu,
+    ata2: clavoC,
+    ata3: mantoE,
+    ata4: poderP,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 55,
+    dff: 85,
+    ats: 65,
+    dfs: 85,
+    eps: 0,
+    eaf: 0,
+    edf: 1,
+    eas: 0,
+    eds: 1
+}
+var octillery = {
+    nivel: 50,
+    nombre: "Octillery",
+    tipo: agua,
+    tipo2: agua,
+    ata1: rayoAu,
+    ata2: rayoBu,
+    ata3: pulpoc,
+    ata4: rayoH,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 105,
+    dff: 75,
+    ats: 105,
+    dfs: 75,
+    eps: 0,
+    eaf: 1,
+    edf: 0,
+    eas: 1,
+    eds: 0
+}
+var delibird = {
+    nivel: 50,
+    nombre: "Delibird",
+    tipo: hielo,
+    tipo2: volador,
+    ata1: presente,
+    ata2: presente,
+    ata3: presente,
+    ata4: presente,
+    estado: "normal",
+    estado2: [],
+    ps: 45,
+    atf: 55,
+    dff: 45,
+    ats: 65,
+    dfs: 45,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var mantine = {
+    nivel: 50,
+    nombre: "Mantine",
+    tipo: agua,
+    tipo2: volador,
+    ata1: derribo,
+    ata2: ataqueAla,
+    ata3: hidrop,
+    ata4: rayoCo,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 40,
+    dff: 70,
+    ats: 80,
+    dfs: 140,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var skarmory = {
+    nivel: 50,
+    nombre: "Skarmory",
+    tipo: acero,
+    tipo2: volador,
+    ata1: rapidez,
+    ata2: ataqueF,
+    ata3: aireAf,
+    ata4: alaAcero,
+    estado: "normal",
+    estado2: [],
+    ps: 65,
+    atf: 80,
+    dff: 140,
+    ats: 40,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var houndoom = {
+    nivel: 50,
+    nombre: "Houndoom",
+    tipo: siniestro,
+    tipo2: fuego,
+    ata1: polucion,
+    ata2: mord,
+    ata3: finta,
+    ata4: lanz,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 90,
+    dff: 50,
+    ats: 110,
+    dfs: 80,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 2,
+    eds: 0
+}
+var kingdra = {
+    nivel: 50,
+    nombre: "Kingdra",
+    tipo: agua,
+    tipo2: dragon,
+    ata1: pantallaH,
+    ata2: pistolaA,
+    ata3: ciclon,
+    ata4: hidrob,
+    estado: "normal",
+    estado2: [],
+    ps: 75,
+    atf: 95,
+    dff: 95,
+    ats: 95,
+    dfs: 95,
+    eps: 0,
+    eaf: 1,
+    edf: 0,
+    eas: 1,
+    eds: 1
+}
+var donphan = {
+    nivel: 50,
+    nombre: "Donphan",
+    tipo: tierra,
+    tipo2: tierra,
+    ata1: ataqueF,
+    ata2: desenrollar,
+    ata3: giroRap,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 90,
+    atf: 120,
+    dff: 120,
+    ats: 60,
+    dfs: 60,
+    eps: 0,
+    eaf: 1,
+    edf: 1,
+    eas: 0,
+    eds: 0
+}
+var porygon2 = {
+    nivel: 50,
+    nombre: "Porygon2",
+    tipo: normal,
+    tipo2: normal,
+    ata1: recuperacion,
+    ata2: fijarB,
+    ata3: tria,
+    ata4: electrocañon,
+    estado: "normal",
+    estado2: [],
+    ps: 85,
+    atf: 80,
+    dff: 90,
+    ats: 105,
+    dfs: 95,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 1,
+    eds: 0
+}
+var stantler = {
+    nivel: 50,
+    nombre: "Stantler",
+    tipo: normal,
+    tipo2: normal,
+    ata1: pisoton,
+    ata2: ataqueArena,
+    ata3: derribo,
+    ata4: rayoCo,
+    estado: "normal",
+    estado2: [],
+    ps: 73,
+    atf: 95,
+    dff: 62,
+    ats: 85,
+    dfs: 65,
+    eps: 0,
+    eaf: 1,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var smeargle = {
+    nivel: 50,
+    nombre: "Smeargle",
+    tipo: normal,
+    tipo2: normal,
+    ata1: esquema,
+    ata2: esquema,
+    ata3: esquema,
+    ata4: esquema,
+    estado: "normal",
+    estado2: [],
+    ps: 55,
+    atf: 20,
+    dff: 35,
+    ats: 20,
+    dfs: 45,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var hitmontop = {
+    nivel: 50,
+    nombre: "Hitmontop",
+    tipo: lucha,
+    tipo2: lucha,
+    ata1: contraA,
+    ata2: deteccion,
+    ata3: tripleP,
+    ata4: esfuerzo,
+    estado: "normal",
+    estado2: [],
+    ps: 50,
+    atf: 95,
+    dff: 95,
+    ats: 35,
+    dfs: 110,
+    eps: 0,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 2
+}
+var miltank = {
+    nivel: 50,
+    nombre: "Miltank",
+    tipo: normal,
+    tipo2: normal,
+    ata1: batido,
+    ata2: venganza,
+    ata3: desenrollar,
+    ata4: golpeC,
+    estado: "normal",
+    estado2: [],
+    ps: 95,
+    atf: 80,
+    dff: 105,
+    ats: 40,
+    dfs: 70,
+    eps: 0,
+    eaf: 0,
+    edf: 2,
+    eas: 0,
+    eds: 0
+}
+var blissey = {
+    nivel: 50,
+    nombre: "Blissey",
+    tipo: normal,
+    tipo2: normal,
+    ata1: amortiguador,
+    ata2: bombaH,
+    ata3: pantallaLuz,
+    ata4: dobleF,
+    estado: "normal",
+    estado2: [],
+    ps: 255,
+    atf: 10,
+    dff: 10,
+    ats: 75,
+    dfs: 135,
+    eps: 3,
+    eaf: 0,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+var tyranitar = {
+    nivel: 50,
+    nombre: "Tyranitar",
+    tipo: roca,
+    tipo2: siniestro,
+    ata1: avala,
+    ata2: golpe,
+    ata3: trit,
+    ata4: terr,
+    estado: "normal",
+    estado2: [],
+    ps: 100,
+    atf: 134,
+    dff: 110,
+    ats: 95,
+    dfs: 100,
+    eps: 0,
+    eaf: 3,
+    edf: 0,
+    eas: 0,
+    eds: 0
+}
+    function log() {
+        document.getElementById("log").style.display = "none"
+        document.getElementById("registro").style.display = "none"
+        form1.hidden = false
+    }
+    function reg() {
+        document.getElementById("log").style.display = "none"
+        document.getElementById("registro").style.display = "none"
+        form2.hidden = false
+}
+    function ocultar() {
+        form1.hidden = true
+        form2.hidden = true
+    }
+    async function cargarPk(vari) {
+        po = window['poke' + vari] = (document.getElementById(`vv${vari+3}`).value).toLowerCase()
+        ps = window['ps' + vari] = Math.round(10 + (window[po].nivel/100 * ((window[po].ps * 2) + Math.floor(Math.random() * 32) + window[po].eps)) + window[po].nivel)  
+        atf = window['atf' + vari] = Math.round(5 + (window[po].nivel/ 100 * ((window[po].atf * 2) + Math.floor(Math.random() * 32) + window[po].eaf)))
+        dff = window['dff' + vari] = Math.round(5 + (window[po].nivel/ 100 * ((window[po].dff * 2) + Math.floor(Math.random() * 32) + window[po].edf)))
+        ats = window['ats' + vari] = Math.round(5 + (window[po].nivel/ 100 * ((window[po].ats * 2) + Math.floor(Math.random() * 32) + window[po].eas)))
+        dfs = window['dfs' + vari] = Math.round(5 + (window[po].nivel/ 100 * ((window[po].dfs * 2) + Math.floor(Math.random() * 32) + window[po].eds)))
+        document.getElementById(`poke${vari}`).innerHTML = `<img id="imgPoke0${vari}" src="./sprite/${document.getElementById(`vv${vari+3}`).value}_0.gif">
+        <div id="tipos0${vari}"></div>
+        <h2 id="niv0${vari}">Nivel: ${window[po].nivel}</h2>
+        <h2 id="ps0${vari}">PS: ${ps}</h2>
+        <h2 id="atf0${vari}">Ataque: ${atf}</h2>
+        <h2 id="dff0${vari}">Defensa: ${dff}</h2>
+        <h2 id="ats0${vari}">At. especial: ${ats}</h2>
+        <h2 id="dfs0${vari}">Def. especial: ${dfs}</h2>`
+        document.getElementById("hola").innerHTML = document.getElementById(`hola`).innerHTML + `
+        <input hidden name="ps${vari}" id="ps${vari}" value="${window['ps' + vari]}">
+        <input hidden name="atf${vari}" id="atf${vari}" value="${window['atf' + vari]}">
+        <input hidden name="dff${vari}" id="dff${vari}" value="${window['dff' + vari]}">
+        <input hidden name="ats${vari}" id="ats${vari}" value="${window['ats' + vari]}">
+        <input hidden name="dfs${vari}" id="dfs${vari}" value="${window['dfs' + vari]}">`
+    }
+    function elegirP() {
+        document.getElementById('vv1').style.display = "none"
+        document.getElementById('vv2').style.display = "none"
+        document.getElementById('vv3').style.display = "none"
+        document.getElementById('vv4').style.display = "inherit"
+        document.getElementById('vv5').style.display = "inherit"
+        document.getElementById('vv6').style.display = "inherit"
+        document.getElementById('vv7').style.display = "inherit"
+        document.getElementById('vv8').style.display = "inherit"
+        document.getElementById('vv9').style.display = "inherit"
+        document.getElementById('vv10').style.display = "inherit"
+        document.getElementById('z').style.display = "inherit"
+  }
+</script>
+</html>

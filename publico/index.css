@@ -1,0 +1,235 @@
+@font-face {
+    font-family: pokemon-font;
+    src: url(./fuente/pokemon-font.ttf);
+}
+body {
+    background-image: url(./Wiki-background.png);
+    background-size: cover;
+    font-family: 'pokemon-font';
+    font-size: 12px;
+}
+#contOculto {
+    display: none;
+}
+#nav {
+    width: 240px;
+    top: 0px;
+    left: 0px;
+    background-color: burlywood;
+    position: absolute;
+    height: 100vh;
+}
+#mapa {
+    display: none;
+    background-image: url(./kanto.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 81vh;
+    width: 100vh;
+    margin: 5vw;
+}
+#mapa2 {
+    display: none;
+    background-image: url(./johto.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 81vh;
+    width: 100vh;
+    margin: 5vw;
+}
+#contP1 {
+    position: absolute;
+    right: 27vw;
+    bottom: 43vh;
+}
+#contP2 {
+    position: absolute;
+    right: 81vw;
+    top: 11vh
+}
+#eleccion1 {
+    display: grid ;
+    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+}
+#nivel1 {
+    right: -17vw;
+    top: 0vh;
+    position: absolute;
+}
+#salu1 {
+    position: absolute;
+    right: -18vw;
+    top: 11vh
+}
+#nivel2 {
+    right: -20vw;
+    top: 0vh;
+    position: absolute;
+}
+#pk1 {
+    position: absolute;
+    bottom: 20vh;
+    left: 10vw;
+}
+#pk2 {
+    position: absolute;
+    top: 15vh;
+    right: 20vw;
+}
+#pk1 img{width: 250%;}
+#pk2 img{width: 250%;}
+#n2 {
+    position: absolute;
+    right: -3vw;
+}
+#tabla {
+    background-color: bisque;
+    left: 0vw;
+    bottom: 0vh;
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 5vh;
+}
+table {
+    position: absolute;
+    bottom: 7vh;
+    width: 80vw;
+    height: 19vh;
+    right: 16vw;
+}
+td button {
+    width: 30vw;
+    height: 3vw;
+    font-family: 'pokemon-font';
+}
+#gim1 {
+    top: 27vh;
+    left: -8.5vw;
+}
+#gim1_ {
+    top: 31vh;
+    left: 1.2vw;
+    visibility: hidden;
+}
+#gim2 {
+    top: 21vh;
+    left: 6vw;
+    visibility: hidden;
+}
+#gim2_ {
+    top: 61.5vh;
+    left: -3.5vw;
+    visibility: hidden;
+}
+#gim3 {
+    top: 33vh;
+    left: 6vw;
+    visibility: hidden;
+}
+#gim3_ {
+    top: 38vh;
+    left: -8.5vw;
+    visibility: hidden;
+}
+#gim4 {
+    top: 19vh;
+    left: -1vw;
+    visibility: hidden;
+}
+#gim4_ {
+    top: 6vh;
+    left: -3.5vw;
+    visibility: hidden;
+}
+#gim5 {
+    top: 41vh;
+    left: 3.7vw;
+    visibility: hidden;
+}
+#gim5_ {
+    top: 32vh;
+    left: -18vw;
+    visibility: hidden;
+}
+#gim6 {
+    top: 9vh;
+    left: 6vw;
+    visibility: hidden;
+}
+#gim6_ {
+    top: 4vh;
+    left: -13.2vw;
+    visibility: hidden;
+}
+#gim7 {
+    top: 39vh;
+    left: -8.5vw;
+    visibility: hidden;
+}
+#gim7_ {
+    top: -10.5vh;
+    left: 8.5vw;
+    visibility: hidden;
+}
+#gim8 {
+    top: 2vh;
+    left: -8.5vw;
+    visibility: hidden;
+}
+#gim8_ {
+    top: -16vh;
+    left: 15.5vw;
+    visibility: hidden;
+}
+.gims {
+    background-image: url(./botoncito.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 2.6vw;
+    width: 2.6vw;
+    position: relative;
+}
+.bar {
+    background-color: grey;
+}
+.medalla {
+    transform: scale(0.5);
+}
+.medalla2 {
+    transform: scale(0.5);
+    display: none;
+}
+#medallas {
+    display: grid ;
+    grid-template-columns: repeat(auto-fit, minmax(4vw, 0fr));
+}
+#pokemones {
+    display: grid ;
+    grid-template-columns: repeat(auto-fit, minmax(4.5vw, 0.5fr));
+}
+#region {
+    top: -43vh;
+    position: relative;
+    left: -3.7vw;
+    height: 2vw;
+    opacity: 0;
+    width: 2vw;
+}
+#cerrar {
+    position: relative;
+    top: -12vh;
+    right: -33vw;
+}
+#hpRival {
+    position: absolute;
+    right: -23vw;
+    top: 10vh;
+    width: 20vw;
+}
+#hp1 {
+    position: absolute;
+    right: -19.8vw;
+    top: 9vh;
+    width: 20vw;
+}

@@ -1,0 +1,14 @@
+@keyframes op {
+    0% {opacity: 0.9;}
+    100% {opacity: 0.4;}
+}
+
+body {
+    background-color: yellow
+}
+img {
+    height: 300px
+}
+#js {
+    animation: op 1s infinite alternate;
+}
