@@ -62,19 +62,10 @@ async function auth(consulta, respuesta, next) {
     }
     next()
 }
-
-servidor.get('/login.html', auth, async function (consulta, respuesta, next) {
-    if (consulta.sesion) {
-        respuesta.sendFile(path.join(__dirname, 'publico', 'auth.html'))
-    } else {
-        respuesta.redirect('/login.html')
-    }
-})
-
 servidor.get('/', async function (consulta, respuesta, next) {
         respuesta.redirect('/login.html')
 })
-*/
+
 // uso middleware auth.
 servidor.get('/auth.html', auth, async function (consulta, respuesta, next) {
     if (consulta.sesion) {
