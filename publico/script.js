@@ -5556,7 +5556,7 @@ function armarRival() {
     document.getElementById("contOculto").style.display = "inherit"
     document.getElementById("tabla").style.display = "inherit"
     //document.body.style.backgroundImage = "url(./blank-pokemon-battle-template_171714.jpg)"
-    document.getElementById("pk2").innerHTML = `<img src="./sprite/${riv1.nombre.toLowerCase()}_2.png">`
+    document.getElementById("pk2").innerHTML = `<img src="./sprite/${riv1.nombre}_2.png">`
     document.getElementById("hpRival").max = psRiv
     document.getElementById("hpRival").value = psRiv
     document.getElementById("n2").innerHTML = `${riv1.nombre.toUpperCase()}`
@@ -5740,9 +5740,6 @@ function ataque(num) {
         daño = 0
     }
     else {daño = Math.round(0.01 * stab * e * v * (((0.2*poke1.nivel+1)*a*num.potencia)/(25*d))+2)}
-/*document.getElementById("hp1").value = document.getElementById("hp1").value - daño
-    document.getElementById("salu1").innerHTML = `${document.getElementById("hp1").value}/${document.get*/
-
     document.getElementById("hpRival").value = document.getElementById("hpRival").value - daño
     document.getElementById("movs").style.display = "none"
     document.getElementById("tabla").innerText = `¡${poke1.nombre.toUpperCase()} usó ${num.nombre.toUpperCase()}!`
@@ -5762,7 +5759,7 @@ function ataque(num) {
         document.getElementById("tabla").innerText = `¡${riv1.nombre.toUpperCase()} se debilitó!`
         if (rivas === 2) {
             riv1 = riv2
-            document.getElementById("pk2").innerHTML = `<img src="./sprite/${riv2.nombre.toLowerCase()}_2.png">`
+            document.getElementById("pk2").innerHTML = `<img src="./sprite/${riv2.nombre}_2.png">`
             psRiv = psRiv2
             atfRiv = atfRiv2
             dffRiv = dffRiv2
@@ -5771,7 +5768,7 @@ function ataque(num) {
         }
         else if (rivas === 1) {
             riv1 = riv3
-            document.getElementById("pk2").innerHTML = `<img src="./sprite/${riv3.nombre.toLowerCase()}_2.png">`
+            document.getElementById("pk2").innerHTML = `<img src="./sprite/${riv3.nombre}_2.png">`
             psRiv = psRiv3
             atfRiv = atfRiv3
             dffRiv = dffRiv3
