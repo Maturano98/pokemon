@@ -63,7 +63,7 @@ async function auth(consulta, respuesta, next) {
     next()
 }
 servidor.get('/', async function (consulta, respuesta, next) {
-        respuesta.redirect('/login.html')
+        respuesta.redirect('/auth.html')
 })
 
 // uso middleware auth.
