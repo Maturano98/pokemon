@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="./estilo.css">   
+    <link rel="stylesheet" href="./login.css">   
     <link rel="icon" type="image/png" href="./favicon.png">    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -5251,6 +5251,7 @@ var tyranitar = {
         <input hidden name="dfs${vari}" id="dfs${vari}" value="${window['dfs' + vari]}">`
     }
     function elegirP() {
+        if (document.getElementsByTagName("input")[3].value.length >= 6 && document.getElementsByTagName("input")[2].value.length >= 3 ) {
         document.getElementById('vv1').style.display = "none"
         document.getElementById('vv2').style.display = "none"
         document.getElementById('vv3').style.display = "none"
@@ -5261,7 +5262,7 @@ var tyranitar = {
         document.getElementById('vv8').style.display = "inherit"
         document.getElementById('vv9').style.display = "inherit"
         document.getElementById('vv10').style.display = "inherit"
-        document.getElementById('z').style.display = "inherit"
+        document.getElementById('z').style.display = "inherit"}
   }
 </script>
 </html>
