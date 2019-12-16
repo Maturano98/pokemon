@@ -12,12 +12,15 @@ body {
     display: none;
 }
 #nav {
-    width: 240px;
+    width: 17vw;
     top: 0px;
     left: 0px;
     background-color: burlywood;
     position: absolute;
     height: 100vh;
+}
+#bton {
+    padding-top: 1vh;
 }
 #mapa {
     display: none;
