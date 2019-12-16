@@ -5944,3 +5944,6 @@ function contraataque(){
     }
     document.getElementById("movs").style.display = "inherit"
 }}}
+function logout() {
+  window.location.href = "./login.html"
+}
