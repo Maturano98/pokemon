@@ -5708,7 +5708,7 @@ function ataque(num) {
             document.getElementById("tabla").innerText = `¡El movimiento falló!`
         }
     } 
-    else if (num.efecto.includes("curar mitad") == true) {
+    else if (num.efecto.includes("curar mitad") == true || num.efecto.includes("recuperar mitad") == true) {
         num.pp--
         document.getElementById("hp1").value = document.getElementById("hp1").value + Math.round(document.getElementById("hp1").value/2)
         document.getElementById("salu1").innerHTML = `${document.getElementById("hp1").value}/${document.getElementById("hp1").max}`
