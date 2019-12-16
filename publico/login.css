@@ -1,0 +1,13 @@
+body {
+    background-image: url(./Wiki-background.png);
+    background-size: cover;
+}
+#pokemon {
+    height: 35%;
+}
+#poke1 {
+    height: 35%;
+}
+#poke2 {
+    height: 35%;
+}
