@@ -9,8 +9,9 @@
     <title>Pokémon JS</title>
 </head>
 <body>
+    <center>
     <button id="log" onclick="log()">Login</button>
-    <button id="registro" onclick="reg()">Registro</button>
+        <button id="registro" onclick="reg()">Registro</button></center>
     <form action="/api/login" hidden method="POST" id="form1">
         <fieldset>
             <label for="nombre">Usuario</label>
@@ -33,6 +34,7 @@
             <input type="password" name="pass" id="pass" minlength="6" required>
         </fieldset>
         <button type="button" id="vv3" onclick="elegirP()">Ingresar</button>
+        <center>
         <h2 id="z" style="display: none">ELIGE 6 POKÉMON</h2>
         <div id="poke1"></div>
         <select id="vv4" name="vv4" required style="display: none"  onchange="cargarPk(1)">
@@ -444,6 +446,7 @@
         </select>
         <div id="hola"></div>
         <button id= "vv10" required style="display: none" type="submit">Ingresar</button>
+        </center>
     </form>
 </body>
 <script>
