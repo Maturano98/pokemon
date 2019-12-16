@@ -5610,6 +5610,22 @@ function ataque(num) {
         daño = 0
     }
     else {
+        if (num.efecto.includes(quemar() == true)) {
+            var xx = num.efecto.indexOf(quemar())
+            riv1.estado == num.efecto[xx]
+        }
+        if (num.efecto.includes(congelar() == true)) {
+            var xx = num.efecto.indexOf(congelar())
+            riv1.estado == num.efecto[xx]
+        }
+        if (num.efecto.includes(dormir() == true)) {
+            var xx = num.efecto.indexOf(dormir())
+            riv1.estado == num.efecto[xx]
+        }
+        if (num.efecto.includes(paralizar() == true)) {
+            var xx = num.efecto.indexOf(paralizar())
+            riv1.estado == num.efecto[xx]
+        }
         if (num === transformacion) {
             num.pp--
             poke1 = riv1
@@ -5627,7 +5643,7 @@ function ataque(num) {
             document.getElementById("at4").style.display = "inherit"
             contraataque()
         }
-        if (num.efecto == "presente") {
+        if (num.efecto.includes("presente") == true) {
             num.pp--
             regalito = Math.floor(Math.random() * 100) + 1
             v = Math.floor(Math.random() * (100 - 85 + 1) ) + 85
@@ -5671,7 +5687,7 @@ function ataque(num) {
             document.getElementById("hpRival").value = document.getElementById("hpRival").value - daño
             contraataque()
         }
-        if (num.efecto == "confusion") {
+        if (num.efecto.includes("confusion") == true) {
             num.pp--
             document.getElementById("movs").style.display = "none"
             if (riv1.estado2.includes('confundido') !== true) {
@@ -5681,7 +5697,7 @@ function ataque(num) {
             }
             contraataque()
         }
-    if (num.potencia == "igualar") {
+    if (num.efecto.includes("igualar") == true) {
         num.pp--
         document.getElementById("movs").style.display = "none"
         if (document.getElementById("hp1").value < document.getElementById("hpRival").value) {
@@ -5692,14 +5708,14 @@ function ataque(num) {
             document.getElementById("tabla").innerText = `¡El movimiento falló!`
         }
     } 
-    else if (num.potencia == "curar mitad") {
+    else if (num.efecto.includes("curar mitad") == true) {
         num.pp--
         document.getElementById("hp1").value = document.getElementById("hp1").value + Math.round(document.getElementById("hp1").value/2)
         document.getElementById("salu1").innerHTML = `${document.getElementById("hp1").value}/${document.getElementById("hp1").max}`
         document.getElementById("movs").style.display = "none"
         document.getElementById("tabla").innerText = `¡${poke1.nombre} usó ${num.nombre}!`
     }
-    else if (num.potencia == "mitad") {
+    else if (num.efecto.includes("mitad") == true) {
         num.pp--
         document.getElementById("hp2").value = Math.round(document.getElementById("hp2").value/2)
         document.getElementById("movs").style.display = "none"
@@ -5743,7 +5759,7 @@ function ataque(num) {
     document.getElementById("hpRival").value = document.getElementById("hpRival").value - daño
     document.getElementById("movs").style.display = "none"
     document.getElementById("tabla").innerText = `¡${poke1.nombre.toUpperCase()} usó ${num.nombre.toUpperCase()}!`
-    if (num.efecto === "explosion") {
+    if (num.efecto.includes("explosion") == true) {
         document.getElementById("hp1").value = 0
     }
     setTimeout(function() {
@@ -5805,7 +5821,7 @@ function contraataque(){
         daño = 0
     }
     else {
-        if (conA.efecto == "confusion") {
+        if (conA.efecto.includes("confusion") == true) {
             conA.pp--
             
             if (poke1.estado2.includes('confundido') !== true) {
@@ -5815,7 +5831,7 @@ function contraataque(){
             }
             document.getElementById("movs").style.display = "inherit"
         }
-        if (conA.potencia == "igualar") {
+        if (conA.efecto.includes("igualar") == true) {
             conA.pp--
         if (document.getElementById("hpRival").value < document.getElementById("hp1").value) {
             document.getElementById("hp1").value = document.getElementById("hpRival").value
@@ -5826,18 +5842,19 @@ function contraataque(){
             document.getElementById("tabla").innerText = `¡El movimiento falló!`
         }
     }
-    else if (conA.potencia == "curar mitad") {
+    else if (conA.efecto.includes("curar mitad") == true) {
         conA.pp--
         document.getElementById("hpRival").value = document.getElementById("hpRival").value + Math.round(document.getElementById("hp2").value/2)
         document.getElementById("movs").style.display = "none"
         document.getElementById("tabla").innerText = `¡${riv1.nombre.toUpperCase()} usó ${num.nombre}!`
     }
-    else if (conA.potencia == "mitad") {
+    else if (conA.efecto.includes("mitad") == true) {
         conA.pp--
         document.getElementById("hpRival").value = Math.round(document.getElementById("hpRival").value/2)
         document.getElementById("movs").style.display = "none"
         document.getElementById("tabla").innerText = `¡${riv1.nombre.toUpperCase()} usó ${conA.nombre}!`
     }
+        
     else {
     conA.pp--
     v = Math.floor(Math.random() * (100 - 85 + 1) ) + 85
