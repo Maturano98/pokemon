@@ -5,11 +5,11 @@
 #log, #registro {
     border: 9px solid  transparent;
     width: 80%;
-    
     border-radius: 1vw;
     padding: 2vh;
     border-image-source: url('./borde.png');
     border-image-slice: 4;
+    margin-bottom: 1vh;
 }
 input {
     border: none;
