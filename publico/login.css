@@ -1,13 +1,63 @@
+@font-face {
+    font-family: pokemon-font;
+    src: url(./fuente/pokemon-font.ttf);
+}
+#log, #registro {
+    border: 9px solid  transparent;
+    width: 80%;
+    
+    border-radius: 1vw;
+    padding: 2vh;
+    border-image-source: url('./borde.png');
+    border-image-slice: 4;
+}
+input {
+    border: none;
+    border-bottom: 1px dashed;
+    font-family: 'pokemon-font';
+}
+#pedidosya, #vv1, #vv2 {
+    background-color: white;
+    border: 9px solid  transparent;
+    font-size: 1em;
+    font-family: 'pokemon-font';
+    border-radius: 1vw;
+    border-image-source: url('./borde2.png');
+    border-image-slice: 56;
+}
 body {
-    background-image: url(./Wiki-background.png);
+    background-color: rgb(80, 88, 144);
     background-size: cover;
+    font-family: 'pokemon-font';
 }
 #pokemon {
     height: 35%;
 }
-#poke1 {
-    height: 35%;
+#poke1,#poke2,#poke3,#poke4,#poke5,#poke6 {
+    background-color: white;
+    width: 50%;
+    font-size: 0.6em;
+    height: 95%;
+    border: 9px solid  transparent;
+    border-radius: 1vw;
+    border-image-source: url('./borde.png');
+    border-image-slice: 4;
+    visibility: hidden;
 }
-#poke2 {
-    height: 35%;
+#cont {
+    display: grid ;
+    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+}
+#z {
+    color: white;
+}
+button {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 1vw;
+    font-size: 1em;
+    font-family: 'pokemon-font';
+}
+select {
+    font-family: 'pokemon-font';
 }
