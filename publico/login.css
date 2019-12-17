@@ -24,6 +24,7 @@ input {
     border-radius: 1vw;
     border-image-source: url('./borde2.png');
     border-image-slice: 56;
+    margin-bottom: 1vh;
 }
 body {
     background-color: rgb(80, 88, 144);
