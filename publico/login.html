@@ -10,33 +10,34 @@
 </head>
 <body>
     <center>
-    <button id="log" onclick="log()">Login</button>
-        <button id="registro" onclick="reg()">Registro</button></center>
+    <button id="log" onclick="log()">INGRESAR</button>
+        <button id="registro" onclick="reg()">REGISTRARSE</button></center>
     <form action="/api/login" hidden method="POST" id="form1">
-        <fieldset>
-            <label for="nombre">Usuario</label>
+        <div id="pedidosya">
+            <label for="nombre">INGRESE SU USUARIO</label>
             <input name="nombre" id="nombre" required>
-        </fieldset>
-        <fieldset> 
-            <label for="pass">Contraseña</label>
+        </div>
+        <div id="pedidosya">
+            <label for="pass">INGRESE CONTRASEÑA</label>
             <input type="password" name="pass" id="pass" minlength="6" required>
-        </fieldset>
-            <button type="submit">Ingresar</button>
+        </div id="pedidosya">
+            <button type="submit">CONFIRMAR</button>
     </form>
 
     <form action="/api/registro" hidden id="form2" method="POST">
-        <fieldset id="vv1">
-            <label for="nombre">Usuario</label>
+        <div id="vv1">
+            <label for="nombre">INGRESE SU USUARIO</label>
             <input name="nombre" id="nombre" required>
-        </fieldset>
-        <fieldset id="vv2"> 
-            <label for="pass">Contraseña</label>
+        </div>
+        <div id="vv2"> 
+            <label for="pass">INGRESE CONTRASEÑA</label>
             <input type="password" name="pass" id="pass" minlength="6" required>
-        </fieldset>
-        <button type="button" id="vv3" onclick="elegirP()">Ingresar</button>
+        </div>
+        <button type="button" id="vv3" onclick="elegirP()">CONFIRMAR</button>
         <center>
         <h2 id="z" style="display: none">ELIGE 6 POKÉMON</h2>
-        <div id="poke1"></div>
+        <div id="cont">
+            <div id="conP1">
         <select id="vv4" name="vv4" required style="display: none"  onchange="cargarPk(1)">
             <option hidden disabled selected value>Elige un pokémon</option>
             <option>Venusaur</option>
@@ -111,7 +112,8 @@
             <option>Snorlax</option>
             <option>Dragonite</option>
         </select>
-        <div id="poke2"></div>
+        <div id="poke1"></div></div>
+        <div id="conP2">
         <select id="vv5" name="vv5" required style="display: none" onchange="cargarPk(2)">
             <option hidden disabled selected value>Elige un pokémon</option>
             <option>Venusaur</option>
@@ -186,7 +188,8 @@
             <option>Snorlax</option>
             <option>Dragonite</option>
         </select>
-        <div id="poke3"></div>
+        <div id="poke2"></div></div>
+        <div id="conP3">
         <select id="vv6" name="vv6" required style="display: none" onchange="cargarPk(3)">
             <option hidden disabled selected value>Elige un pokémon</option>
             <option>Venusaur</option>
@@ -261,7 +264,8 @@
             <option>Snorlax</option>
             <option>Dragonite</option>
         </select>
-        <div id="poke4"></div>
+        <div id="poke3"></div></div>
+        <div id="conP4">
         <select id="vv7" name="vv7" required style="display: none" onchange="cargarPk(4)">
             <option hidden disabled selected value>Elige un pokémon</option>
             <option>Meganium</option>
@@ -322,7 +326,8 @@
             <option>Blissey</option>
             <option>Tyranitar</option>
         </select>
-        <div id="poke5"></div>
+        <div id="poke4"></div></div>
+        <div id="contP5">
         <select id="vv8" name="vv8" required style="display: none" onchange="cargarPk(5)">
             <option hidden disabled selected value>Elige un pokémon</option>
             <option>Meganium</option>
@@ -383,7 +388,8 @@
             <option>Blissey</option>
             <option>Tyranitar</option>
         </select>
-        <div id="poke6"></div>
+        <div id="poke5"></div></div>
+        <div id="contP6">
         <select id="vv9" name="vv9" required style="display: none" onchange="cargarPk(6)">
             <option hidden disabled selected value>Elige un pokémon</option>
             <option>Meganium</option>
@@ -444,8 +450,9 @@
             <option>Blissey</option>
             <option>Tyranitar</option>
         </select>
+        <div id="poke6"></div></div>
         <div id="hola"></div>
-        <button id= "vv10" required style="display: none" type="submit">Ingresar</button>
+        <button id= "vv10" required style="display: none" type="submit">CONFIRMAR</button>
         </center>
     </form>
 </body>
@@ -5232,6 +5239,7 @@ var tyranitar = {
         form2.hidden = true
     }
     async function cargarPk(vari) {
+        document.getElementById(`poke${vari}`).style.visibility = "inherit"
         po = window['poke' + vari] = (document.getElementById(`vv${vari+3}`).value).toLowerCase()
         ps = window['ps' + vari] = Math.round(10 + (window[po].nivel/100 * ((window[po].ps * 2) + Math.floor(Math.random() * 32) + window[po].eps)) + window[po].nivel)  
         atf = window['atf' + vari] = Math.round(5 + (window[po].nivel/ 100 * ((window[po].atf * 2) + Math.floor(Math.random() * 32) + window[po].eaf)))
@@ -5255,6 +5263,7 @@ var tyranitar = {
     }
     function elegirP() {
         if (document.getElementsByTagName("input")[3].value.length >= 6 && document.getElementsByTagName("input")[2].value.length >= 3 ) {
+        document.body.style.backgroundImage = "url('./fondo-elegir.png')"
         document.getElementById('vv1').style.display = "none"
         document.getElementById('vv2').style.display = "none"
         document.getElementById('vv3').style.display = "none"
