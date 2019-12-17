@@ -13,6 +13,7 @@
     <button id="log" onclick="log()">INGRESAR</button>
         <button id="registro" onclick="reg()">REGISTRARSE</button></center>
     <form action="/api/login" hidden method="POST" id="form1">
+        <center>
         <div id="pedidosya">
             <label for="nombre">INGRESE SU USUARIO</label>
             <input name="nombre" id="nombre" required>
@@ -21,11 +22,11 @@
             <label for="pass">INGRESE CONTRASEÑA</label>
             <input type="password" name="pass" id="pass" minlength="6" required>
         </div id="pedidosya">
-            <button type="submit">CONFIRMAR</button>
+            <button type="submit">CONFIRMAR</button></center>
     </form>
 
     <form action="/api/registro" hidden id="form2" method="POST">
-        <div id="vv1">
+        <center><div id="vv1">
             <label for="nombre">INGRESE SU USUARIO</label>
             <input name="nombre" id="nombre" required>
         </div>
@@ -34,7 +35,7 @@
             <input type="password" name="pass" id="pass" minlength="6" required>
         </div>
         <button type="button" id="vv3" onclick="elegirP()">CONFIRMAR</button>
-        <center>
+        
         <h2 id="z" style="display: none">ELIGE 6 POKÉMON</h2>
         <div id="cont">
             <div id="conP1">
