@@ -23,6 +23,7 @@ input {
     border-image-source: url('./borde2.png');
     border-image-slice: 38;
     margin-bottom: 1vh;
+    width: 30%;
 }
 body {
     background-color: rgb(80, 88, 144);
