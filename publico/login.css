@@ -19,11 +19,9 @@ input {
 #pedidosya, #vv1, #vv2 {
     background-color: white;
     border: 9px solid  transparent;
-    font-size: 1em;
-    font-family: 'pokemon-font';
     border-radius: 1vw;
     border-image-source: url('./borde2.png');
-    border-image-slice: 56;
+    border-image-slice: 40;
     margin-bottom: 1vh;
 }
 body {
