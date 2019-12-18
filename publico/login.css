@@ -13,8 +13,10 @@
 }
 input {
     border: none;
-    border-bottom: 1px dashed;
+    border-bottom: 0.4vh dashed;
     font-family: 'pokemon-font';
+    font-size: 1em;
+    margin-top: 1.5vh;
 }
 #pedidosya, #vv1, #vv2 {
     background-color: white;
