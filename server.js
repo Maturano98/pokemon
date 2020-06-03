@@ -6,9 +6,6 @@ var MongoClient = require('mongodb').MongoClient;
 var puerto = process.env.PORT || 3000
 var servidor = express()
 
-// Connection URL
-var url = 'mongodb+srv://aMaturano:pokemon4115@cluster0-vd76p.mongodb.net/test?retryWrites=true&w=majority'
- 
 // Database Name
 var dbNombre = 'pokemon';
 var bd;
